@@ -1,0 +1,74 @@
+clearplayerclasses
+addplayerclass Doomer //nomenu
+addplayerclass Purist
+
+weaponsection "Brutal_Doom"
+
+setslot 1 Chain_Saw ClassicModernSaw Melee_Attacks ClassicFist ClassicSaw
+setslot 2 DualRifles Rifle  BrutalPistol ClassicPistol MP40
+setslot 3 Shot_Gun SSG ClassicShotgun ClassicSSG
+setslot 4 MiniGun ClassicChaingun HitlersBuzzsaw
+setslot 5 GrenadeLauncher Rocket_Launcher ClassicRocketLauncher
+setslot 6 RailGun DualPlasmaRifles Plasma_Gun ClassicPlasmaRifle
+setslot 7 BFG10k BIG_FUCKING_GUN VanillaBFG9000
+setslot 8 HellishMissileLauncher
+setslot 9 FlameCannon
+setslot 0 HandGrenades
+
+   addkeysection "BrutalDoom - Advanced Movements" BrutalDoomActions               // the last unquoted bit used to say MySampleKeysection
+   
+   addmenukey "Kick" kickem
+   alias kickem "puke 301"
+   defaultbind Q kickem
+
+   addmenukey "Reload" reloader
+   alias reloader "puke 303"
+   defaultbind R reloader
+
+
+	addmenukey "Toss Grenade" grenadetoss
+   alias grenadetoss "puke 315"
+   defaultbind G grenadetoss
+   
+   addmenukey "Unload Gun" unreloader
+   alias unreloader "puke 363"
+
+   addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions               // here too
+
+  
+   addmenukey "Offend" brutaltaunt
+   alias brutaltaunt "puke 302"
+   defaultbind H brutaltaunt
+   
+   addmenukey "Wave(1)" wave1
+   alias wave1 "puke 431"
+   defaultbind V wave1
+
+   addmenukey "Wave(2)" wave2
+   alias wave2 "puke 432"
+   defaultbind X wave2
+   
+   addmenukey "Advanced Taunt" advtaunt
+   alias advtaunt "puke 304"
+   defaultbind J advtaunt
+   
+   addmenukey "One-Liners" oneliner
+   alias oneliner "puke 305"
+   defaultbind K oneliner
+   
+   
+   
+
+   
+   
+   addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves              // here too
+
+   addmenukey "Roll Left" roleft
+   alias roleft "puke 306"
+   defaultbind Z roleft
+   
+   
+   addmenukey "Roll Right" roright
+   alias roright "puke 307"
+   defaultbind C roright
+   

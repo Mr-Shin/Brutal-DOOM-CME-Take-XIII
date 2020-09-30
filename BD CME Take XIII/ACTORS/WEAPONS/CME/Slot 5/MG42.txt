@@ -1,0 +1,65 @@
+ACTOR CMEv20bHitlersBuzzsaw : CMEWeapon
+{
+	Game Doom
+	Weapon.SelectionOrder 1
+	Weapon.AmmoUse 1
+	Weapon.AmmoGive 1000
+	Weapon.AmmoType "CMEv20bBuzzsawAmmo"
+	Inventory.PickupMessage "You got the Super Secret Weapon: The Brutal DOOM v20b Hitler's Buzzsaw (Slot 5)!!!"
+	Obituary "%o was cut in half by %k's MG42"
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NOAUTOAIM
+	Tag "Brutal DOOM v20b MG42"
+	Scale 0.4
+	States
+	{
+	Ready3:
+	Ready:
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+		HBUS A 1 A_WeaponReady
+		Loop
+	Deselect:
+		HBUS A 1 A_Lower
+		Loop
+	Select:
+		HBUS A 1 A_Raise
+		Loop
+	Fire:
+		TNT1 A 0 BRIGHT A_FireBullets (1, 1, 1, 25, "ExtremeBulletPuff2")
+		TNT1 A 0 A_FireCustomMissile("ShakeYourAss", 0, 0, 0, 0)
+        TNT1 A 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_PlaySound("MP40", 1)
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",-5,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+		TNT1 A 0 A_SetPitch(-1.0 + pitch)
+		HBUS B 1 BRIGHT 
+		PKCG A 0 A_SetPitch(0.6 + pitch)
+		TNT1 A 0 A_SetAngle(random(2, -2) + angle)
+		HBUS A 1 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		
+		TNT1 A 0 BRIGHT A_FireBullets (1, 1, 1, 25, "ExtremeBulletPuff")
+        TNT1 A 0 A_FireCustomMissile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1))
+		TNT1 A 0 A_PlaySound("MP40", 1)
+		TNT1 A 0 A_FireCustomMissile("SmokeSpawner",0,0,0,5)
+		TNT1 A 0 A_FireCustomMissile("YellowFlareSpawn",-5,0,0,0)
+		TNT1 A 0 A_FireCustomMissile("RifleCaseSpawn",5,0,6,-6)
+		TNT1 A 0 A_SetPitch(-1.0 + pitch)
+		HBUS C 1 BRIGHT 
+		PKCG A 0 A_SetPitch(0.6 + pitch)
+		TNT1 A 0 A_SetAngle(random(2, -2) + angle)
+		HBUS A 1 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
+		Goto Ready
+	Spawn:
+		HBUS D -1
+		Stop
+	}
+}
+
+ACTOR CMEv20bBuzzsawAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 1000
+   Ammo.BackpackAmount 20
+   Ammo.BackpackMaxAmount 1000
+}

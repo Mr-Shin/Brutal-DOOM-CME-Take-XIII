@@ -39,7 +39,9 @@ OptionMenu "BrutalOptions"
   StaticText "How much blood you want to see?"
   StaticText " "
   
-  
+   Option "HUD Type", "bd_sbartype", "HUDType"
+  StaticText "Select your hud"
+  StaticText " "
   
   Option "Enable Janitor", "zdoombrutaljanitor", "YesOrNo"
   StaticText "Makes gibs disappear after 30 seconds."
@@ -47,6 +49,14 @@ OptionMenu "BrutalOptions"
   
   Option "Enable Shotgun Strap Physics", "zdoombd_shotgunstrap", "YesOrNo"
   StaticText " "
+  
+  Option "Disabled Helmet Animation",				"bd_NoHelmetAnimation", "OnOff"
+  StaticText "Remove animation of putting on your helmet at the start"
+  StaticText " "
+  StaticText " "
+  
+  Command "Force HUD to Restart",			"pukename BDRespawn"
+
   
   StaticText "===== Server options ====="
   StaticText "(Requires map restart to take effect)"
@@ -78,7 +88,11 @@ OptionValue "YesOrNo"
 	1, "Yes"
 }
 
-
+OptionValue "HUDType"
+{
+	1, "BD 16:9"
+	2, "BD 4:3"
+}
 
 OptionValue "YesOrNoFalse"
 {

@@ -1,0 +1,205 @@
+ACTOR CMEClip1 : Ammo 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a Low Caliber Magazine."
+	Inventory.Amount 20
+	Inventory.MaxAmount 400
+	Ammo.BackpackAmount 20
+	inventory.pickupsound "clip1/pkup"
+	Ammo.BackpackMaxAmount 800
+	Inventory.Icon "CLIPC0"
+	States
+	{
+	Spawn:
+		CLIP C -1
+		Stop
+	}
+}
+
+ACTOR CMEClip2 : Ammo replaces clip
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a High Caliber Magazine."
+	Inventory.Amount 20
+	Inventory.MaxAmount 500
+	Ammo.BackpackAmount 20
+	Ammo.BackpackMaxAmount 1000
+	Inventory.Icon "CLIPD0"
+	inventory.pickupsound "clip2/pkup"
+	States
+	{
+	Spawn:
+		CLIP D -1
+		Stop
+	}
+}
+
+
+ACTOR CMEClipBox2 : CMEClip2 replaces clipbox
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of rifle ammunition."
+	Inventory.Amount 100
+	States
+	{
+	Spawn:
+		AMMO A -1
+		Stop
+	}
+}
+
+ACTOR CMEShell : Ammo Replaces Shell
+{
+	Inventory.PickUpSound "shel/pkup"
+	+FLOORCLIP
+	+DONTGIB
+	Inventory.Amount 4
+	Inventory.MaxAmount 300
+	Ammo.BackpackAmount 4
+	Ammo.BackpackMaxAmount 600
+	States
+	{
+	Spawn:
+		SHEL A -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox : CMEShell Replaces SHellBox
+{
+	Game Doom
+	SpawnID 143
+	Inventory.PickupMessage "Picked up a box of 20 Shells"
+	Inventory.Amount 20
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX B -1
+		Stop
+	}
+}
+
+Actor CMERocketAmmo : Ammo Replaces RocketAmmo
+{
++floorclip
++dontgib
+Inventory.Amount 2
+Inventory.MaxAmount 300
+Ammo.BackpackAmount 2
+Ammo.BackpackMaxAmount 600
+	States
+	{
+	Spawn:
+		ROCK B -1
+		Stop
+	}
+
+}
+
+Actor CMERocketBox : CMERocketAmmo Replaces RocketBox
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a box of Rockets"
+Inventory.Amount 6
+Scale 0.9
+States
+	{
+	Spawn:
+		BROK B -1
+		Stop
+	}
+	
+}
+
+
+Actor CMECell : Ammo Replaces Cell
+{
++floorclip
++dontgib
+inventory.amount 20
+Inventory.maxamount 800
+Ammo.BackpackAmount 20
+Ammo.backpackmaxamount 1600
+	States
+	{
+	Spawn:
+		CELL A -1
+		Stop
+	}
+	
+}
+
+Actor CMECellBox : CMECell Replaces CellPack
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a Cell Box"
+Inventory.Amount 100
+Scale 0.9
+States
+	{
+	Spawn:
+		CELL B -1
+		Stop
+	}
+	
+}
+
+ACTOR CMEGas : Ammo
+{
+   Inventory.Amount 500
+   Inventory.MaxAmount 999
+   Ammo.BackpackAmount 500
+   Ammo.BackpackMaxAmount 999
+   Inventory.Icon "GSLNA0"
+   Inventory.PickupMessage "You got Gasoline."
+}
+
+
+ACTOR CMEMiniHellRocketAmmo : Ammo
+{
+   Inventory.Amount 0
+   Inventory.MaxAmount 50
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 100
+   Inventory.Icon "FATBD0"
+}
+
+ACTOR CMEGrenadeAmmo : Ammo
+{
+	Game Doom
+	Inventory.PickupMessage "Picked up a Grenade."
+	Inventory.Amount 1
+	Inventory.MaxAmount 15
+	Ammo.BackpackAmount 5
+	Ammo.BackpackMaxAmount 30
+	Inventory.Icon "GRNDA"
+	Scale 0.3
+	States
+	{
+	Spawn:
+		GRND H -1
+		Stop
+	}
+}
+
+
+ACTOR CMEGrenadeBox : CMEGrenadeAmmo
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of grenades."
+	Inventory.Amount 10
+	States
+	{
+	Spawn:
+		GRND H -1
+		Stop
+	}
+}
+	

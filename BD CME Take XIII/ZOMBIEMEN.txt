@@ -32,7 +32,7 @@ Stop
 }}
 
 
-ACTOR Zombie_Man: ZombieMan Replaces ZombieMan
+ACTOR Zombie_Man: ZombieMan 
 {
 	Game Doom
 	Health 50

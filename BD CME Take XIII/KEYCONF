@@ -1,19 +1,6 @@
 clearplayerclasses
 addplayerclass Doomer //nomenu
-addplayerclass Purist
 
-weaponsection "Brutal_Doom"
-
-setslot 1 Chain_Saw ClassicModernSaw Melee_Attacks ClassicFist ClassicSaw
-setslot 2 DualRifles Rifle  BrutalPistol ClassicPistol MP40
-setslot 3 Shot_Gun SSG ClassicShotgun ClassicSSG
-setslot 4 MiniGun ClassicChaingun HitlersBuzzsaw
-setslot 5 GrenadeLauncher Rocket_Launcher ClassicRocketLauncher
-setslot 6 RailGun DualPlasmaRifles Plasma_Gun ClassicPlasmaRifle
-setslot 7 BFG10k BIG_FUCKING_GUN VanillaBFG9000
-setslot 8 HellishMissileLauncher
-setslot 9 FlameCannon
-setslot 0 HandGrenades
 
    addkeysection "BrutalDoom - Advanced Movements" BrutalDoomActions               // the last unquoted bit used to say MySampleKeysection
    
@@ -32,6 +19,14 @@ setslot 0 HandGrenades
    
    addmenukey "Unload Gun" unreloader
    alias unreloader "puke 363"
+   
+    AddMenuKey "Weapon Special" weaponspecial
+   Alias weaponspecial "puke 450"
+   DefaultBind ALT weaponspecial
+   
+     AddMenuKey "Quick Melee/Combo" punchem
+   Alias punchem "puke 3757"
+   DefaultBind V punchem
 
    addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions               // here too
 

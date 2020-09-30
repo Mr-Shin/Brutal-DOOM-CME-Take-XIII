@@ -11,7 +11,10 @@ actor ChaseCam2
   }
 }
 
-
+Actor IsPlayingAsCMEDoomer : Inventory
+{
+Inventory.maxamount 1
+}
 Actor JustStartedGame : Inventory
 {
 inventory.maxamount 1
@@ -562,25 +565,34 @@ var int user_sgverticalspread;
 	damagefactor "TeleportRemover", 0.0
 	DamageFactor "CauseObjectsToSplash", 0.0
 	Player.ColorRange 112, 127
-	Player.StartItem "Rifle"
-	Player.StartItem "Melee_Attacks"
-	Player.StartItem "Clip2", 60
-	Player.StartItem "RifleAmmo", 31
-	Player.StartItem "DoubleRifleAmmo", 31
-	Player.StartItem "ShotgunAmmo", 8
-	Player.StartItem "PlasmaAmmo", 50
-	Player.StartItem "SSGAmmo", 2
-	Player.StartItem "RocketRounds", 6
-	Player.StartItem "RailgunAmmo", 50
+	
+	Player.WeaponSlot 1, CMEChain_Saw, CMEv20bMelee_Attacks
+	Player.WeaponSlot 2, CMEv20bMP40, CMEv21BrutalPistol
+	Player.WeaponSlot 3, CMEv20bShotgun, CMEv20bSSG
+	Player.WeaponSlot 4, CMEv20bRifle
+	Player.WeaponSlot 5, CMEv20bHitlersBuzzsaw, CMEv20bMiniGun
+	Player.WeaponSlot 6, CMEv20bRocket_Launcher
+	Player.WeaponSlot 7, CMEv20bPlasma_Gun
+	Player.WeaponSlot 8, CMEv20bBIG_FUCKING_GUN
+	Player.WeaponSlot 9, CMEv20bHellishMissileLauncher, CMEv20bFlameCannon
+	Player.WeaponSlot 0, Nothing
+	
+	player.startitem "CMEv21BrutalPistol"
+	player.startitem "CMEv20bMelee_Attacks"
+	player.startitem "CMEv21PistolAmmo", 15
+	player.startitem "CMEClip1", 30
+	player.startitem "CMEClip2", 30
+	player.startitem "CMEShell", 8
+	player.startitem "CMEv20bRifleAmmo", 31
+	player.startitem "CMEv20bShotgunAmmo", 8
+	player.startitem "CMEv20bHandGrenades", 1
+	player.Startitem "CMEGrenadeAmmo", 2
+	Player.StartItem "IsPlayingAsCMEDoomer", 1
 	Player.StartItem "IsPlayer", 1
-	Player.StartItem "HandGrenades", 1
-	Player.StartItem "GrenadeAmmo", 1
-	Player.StartItem "LeftRifleAmmo", 31
 	Player.StartItem "JustStartedGame", 1
 	Player.StartItem "NeverSelectedShotgun", 1
-	//Player.StartItem "TargetIsAMarine", 1
 	Player.JumpZ 7.4
-	Player.DisplayName "Modern"
+	Player.DisplayName "CME Class"
 	Player.CrouchSprite "PLYC"
 	States
 	{

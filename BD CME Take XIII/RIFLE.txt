@@ -21,7 +21,7 @@ inventory.maxamount 1
 
 
 
-ACTOR Clip2 : Ammo Replaces Clip
+ACTOR Clip2 : Ammo 
 {
 	Game Doom
 	SpawnID 11
@@ -40,7 +40,7 @@ ACTOR Clip2 : Ammo Replaces Clip
 }
 
 
-ACTOR ClipBox2 : Clip2 Replaces Clipbox
+ACTOR ClipBox2 : Clip2 
 {
 	Game Doom
 	SpawnID 139

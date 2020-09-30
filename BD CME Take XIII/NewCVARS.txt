@@ -1,0 +1,17 @@
+#library "NewCVARS"
+#include "zcommon.acs"
+
+
+Script 5922 (VOID) NET
+{
+	//Sets the player's height to 28 and reduces their speed for slide kicks
+ SetActorProperty(0, APROP_HEIGHT, 28);
+ SetActorProperty(0, APROP_SPEED, 0.0);
+}
+
+Script 5923 (VOID) NET
+{
+	//Sets the player's height to 58 and resets their speed to normal after slide kicking
+ SetActorProperty(0, APROP_HEIGHT, 58);
+ SetActorProperty(0, APROP_SPEED, 1.0);
+}

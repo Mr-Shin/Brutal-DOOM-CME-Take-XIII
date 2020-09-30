@@ -13,7 +13,7 @@ Actor HasClassicSaw: Inventory
 inventory.maxamount 1
 }
 
-Actor Chain_saw : Chainsaw replaces Chainsaw
+Actor Chain_saw : Chainsaw 
 {
 weapon.selectionorder 240
 inventory.pickupsound "weapons/chainsaw/draw"

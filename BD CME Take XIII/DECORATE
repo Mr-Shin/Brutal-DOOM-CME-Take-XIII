@@ -43,6 +43,7 @@ mass 1
 damage 0
 }
 
+#include TOKENS.txt
 
 //Guns Guns Guns
 #include MELEE.txt
@@ -269,3 +270,43 @@ Actor TargetIsAMancubus : Inventory
 {
 inventory.maxamount 1
 }
+
+//New Stuff
+
+//Effects
+#include "ACTORS/EFFECTS/CME/Tracers.txt"
+#include "ACTORS/EFFECTS/CME/PUFF.txt"
+#include "ACTORS/EFFECTS/CME/Casing.txt"
+//CME
+//Items
+#include "ACTORS/ITEMS/CME/AMMO.txt"
+//Weapons
+#include "ACTORS/WEAPONS/CME/MISC/WeaponSpawners.txt"
+#include "ACTORS/WEAPONS/CME/MISC/WEAPONTEMPLATE.txt"
+#include "Actors/Weapons/CME/Slot 0/Grenades.txt"
+#include "ACTORS/Weapons/CME/Slot 1/MELEE.txt"
+#include "ACTORS/Weapons/CME/Slot 1/Saw.txt"
+#include "ACTORS/Weapons/CME/Slot 2/Pistol.txt"
+#include "ACTORS/Weapons/CME/Slot 2/DualPistol.txt"
+#include "ACTORS/Weapons/CME/Slot 2/MP40.txt"
+#include "ACTORS/Weapons/CME/Slot 3/Shotgun.txt"
+#include "ACTORS/Weapons/CME/Slot 3/SSG.txt"
+#include "ACTORS/Weapons/CME/Slot 4/Rifle.txt"
+#include "ACTORS/Weapons/CME/Slot 4/DualRifle.txt"
+#include "ACTORS/Weapons/CME/Slot 5/MINIGUN.txt"
+#include "Actors/Weapons/CME/Slot 5/MG42.txt"
+#include "ACTORS/Weapons/CME/Slot 6/ROCKETLAUNCHER.txt"
+#include "ACTORS/Weapons/CME/Slot 7/Plasma.txt"
+#include "ACtors/Weapons/CME/Slot 7/DualPlasma.txt"
+#include "Actors/Weapons/CME/Slot 8/BFG.txt"
+#include "Actors/Weapons/CME/Slot 9/FlameCannon.txt"
+#include "Actors/Weapons/CME/Slot 9/HellishMissile.txt"
+//Monsters
+//CME
+#include "ACTORS/MONSTERS/CME/ZOMBIEMEN.txt"
+#include "Actors/MONSTERS/CME/SERGEANTS.txt"
+#include "ACTORS/MONSTERS/CME/COMANDO.txt"
+#include "Actors/Monsters/CME/REVENANT.txt"
+#include "ACTORS/Monsters/CME/Mancubus.txt"
+//Blood
+#include "Actors/EFFECTS/CME/Gore.txt"

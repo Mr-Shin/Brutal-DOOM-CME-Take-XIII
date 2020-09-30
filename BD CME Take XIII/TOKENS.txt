@@ -1,0 +1,14 @@
+Actor sbartype1 : Inventory {+INVENTORY.UNDROPPABLE inventory.maxamount 1}
+ACTOR sae_extcam : Inventory
+{
+inventory.maxamount 1
+}
+
+ACTOR sae_deathcam : Inventory
+{
+inventory.maxamount 1
+}
+Actor BDWeaponACtion : Inventory
+{
+inventory.maxamount 1
+}

@@ -25,7 +25,7 @@ inventory.maxamount 1
 //
 // --------------------------------------------------------------------------
 
-ACTOR Shot_Gun : Shotgun Replaces Shotgun
+ACTOR Shot_Gun : DOomWeapon
 {
 	Game Doom
 	SpawnID 27

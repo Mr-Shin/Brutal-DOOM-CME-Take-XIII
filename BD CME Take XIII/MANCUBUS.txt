@@ -1,4 +1,4 @@
-ACTOR Mancubus : Fatso Replaces Fatso
+ACTOR Mancubus : Fatso 
 
 {
     Scale 1.2

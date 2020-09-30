@@ -3,7 +3,7 @@
 // Chaingunner
 //
 //===========================================================================
-ACTOR ChaingunGuy1: ChaingunGuy Replaces ChaingunGuy
+ACTOR ChaingunGuy1: ChaingunGuy 
 {
 	Health 90
 	Radius 16

@@ -563,7 +563,7 @@ ACTOR PlasmaBall99: Plasma_Ball
 
 
 
-ACTOR PlasmagunOnTheFloor: CustomInventory Replaces PlasmaRifle
+ACTOR PlasmagunOnTheFloor: CustomInventory 
 {
  scale 1.0
  radius 16

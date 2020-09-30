@@ -1,0 +1,8 @@
+ACTOR SSawPuff3: SSawPuff
+{
+	damagetype saw
+}
+actor WeakPuff : HitPuff
+{
+DamageType Minor
+}

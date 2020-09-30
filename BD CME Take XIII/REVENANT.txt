@@ -3,7 +3,7 @@
 // Revenant
 //
 //===========================================================================
-ACTOR Revenant1: Revenant Replaces Revenant
+ACTOR Revenant1: Revenant 
 {
 	GibHealth 45
 	Health 250

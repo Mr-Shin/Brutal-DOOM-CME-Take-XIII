@@ -5,7 +5,7 @@
 //
 // --------------------------------------------------------------------------
 
-ACTOR BIG_FUCKING_GUN : BFG9000 Replaces BFG9000
+ACTOR BIG_FUCKING_GUN : DoomWeapon
 {
 	Game Doom
 	Height 20

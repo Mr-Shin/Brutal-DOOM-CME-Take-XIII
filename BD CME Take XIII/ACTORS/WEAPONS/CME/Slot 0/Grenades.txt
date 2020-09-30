@@ -1,0 +1,100 @@
+ACTOR CMEv20bHandGrenades : CMEWeapon
+{
+	Weapon.AmmoUse1 1
+	Weapon.AmmoGive1 1
+	Weapon.AmmoUse2 1
+	Weapon.AmmoGive2 0
+	Weapon.SelectionOrder 99999
+	Weapon.AmmoType1 "CMEGrenadeAmmo"
+	Weapon.AmmoType2 "CMEGrenadeAmmo"
+	Obituary "%o was shreded by %k's grenade."
+    AttackSound "None"
+    Inventory.PickupSound "AmmoAPIN"
+	Inventory.Pickupmessage "You got a Frag Grenade!  (Slot 0)"
+	
+    +WEAPON.NOAUTOAIM
+    +WEAPON.NOALERT
+	+WEAPON.NOAUTOFIRE
+	//+INVENTORY.UNDROPPABLE
+    Scale 0.3
+	States
+	{
+	Ready3:
+	Ready:
+	    TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("CMEGrenadeAmmo", 1, 1)
+		Goto NoGrenades
+		GRHO AB 1
+		Goto Steady
+		
+	Steady:
+		GRHO C 1 A_WeaponReady
+		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
+        TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
+		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
+		Loop
+	
+	NoGrenades:
+		TNT1 A 1 A_WeaponReady
+		Goto Ready
+	
+	Deselect:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("FiredGrenade", 1, "DropGrenade")
+		TNT1 A 1 A_Lower
+		Wait
+	
+	DropGrenade:
+		TNT1 A 0
+		TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
+		TNT1 A 0 A_FireCustomMissile("HandGrenadeDroped", random(-2,2), 1, 0, 0, 0, 0)
+		Goto Deselect
+		
+	Select:
+		GRWG A 1 A_Raise
+		Loop
+	Fire:
+	    GRTH ABCD 1
+		TNT1 A 0 A_GiveInventory("FiredGrenade", 1)
+		TNT1 A 0 A_PLaySound ("GRNPIN")
+		GRTH EEFG 1
+		
+	Hold:
+	    TNT1 A 1
+		TNT1 A 1 A_Refire
+		TNT1 A 0 A_PLaySound ("GRNTOSS")
+		GRTH HI 1
+		TNT1 A 0 A_FireCustomMissile("HandGrenade", random(-2,2), 1, 0, 0, 0, 0)
+	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
+		GRTH JKLM 1
+		TNT1 A 3 
+		Goto Ready
+		
+	AltFire:
+	    GRTH ABCD 1
+		TNT1 A 0 A_GiveInventory("FiredGrenade", 1)
+		TNT1 A 0 A_PLaySound ("GRNPIN")
+		GRTH EEFG 1
+		
+	AltHold:
+	    TNT1 A 1
+		TNT1 A 1 A_Refire
+		TNT1 A 0 A_PLaySound ("GRNTOSS")
+		GRTH HI 1
+		TNT1 A 0 A_FireCustomMissile("HandGrenadeAlt", 0, 1, 0, 0, 0, 0)
+	    TNT1 A 0 A_TakeInventory("FiredGrenade", 1)
+		GRTH JKLM 1
+		TNT1 A 3 
+		Goto Ready	
+		
+ 	Spawn:
+		GRND H -1
+		Stop
+		
+	}
+}
+
+
+

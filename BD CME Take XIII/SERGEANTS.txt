@@ -9,7 +9,7 @@ Actor TypeSergeant : Inventory
 inventory.maxamount 1
 }
 
-ACTOR ShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
+ACTOR ShotgunGuy1: ShotgunGuy 
 {
 	Game Doom
 	Health 50

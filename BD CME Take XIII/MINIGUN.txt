@@ -14,7 +14,7 @@ inventory.maxamount 1
 //
 // --------------------------------------------------------------------------
 
-ACTOR MiniGun : Chaingun Replaces Chaingun
+ACTOR MiniGun : DoomWeapon
 {
 Game Doom
 SpawnID 28

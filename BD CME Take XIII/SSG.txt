@@ -13,7 +13,7 @@ ACTOR SSGAmmo : Ammo
 // Super Shotgun
 //
 // --------------------------------------------------------------------------
-ACTOR SSG : Doomweapon Replaces SuperShotgun
+ACTOR SSG : Doomweapon 
 {
 	Game Doom
 	SpawnID 33

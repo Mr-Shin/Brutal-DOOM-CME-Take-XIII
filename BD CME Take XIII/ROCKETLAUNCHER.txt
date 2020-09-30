@@ -5,7 +5,7 @@
 //
 // --------------------------------------------------------------------------
 
-ACTOR Rocket_Launcher : RocketLauncher Replaces RocketLauncher
+ACTOR Rocket_Launcher : DoomWeapon 
 {
 	Game Doom
 	SpawnID 29

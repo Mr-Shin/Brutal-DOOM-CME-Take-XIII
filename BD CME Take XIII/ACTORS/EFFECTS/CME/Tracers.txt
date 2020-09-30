@@ -1,0 +1,32 @@
+Actor DecorativeTracer: Tracer
+{
+//-DONTSPLASH
+//seesound "weapons/minigunfire"
+//damagetype Minigun
+}
+
+Actor DistantFireSoundShotgun: Tracer
+{
+Speed 0
++NOCLIP
+States
+{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("FARSHT", 1)
+		TNT1 A 40
+		Stop
+}}
+
+Actor DistantFireSoundRifle: Tracer
+{
+Speed 0
++NOCLIP
+States
+{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("FARRIF", 1)
+		TNT1 A 40
+		Stop
+}}

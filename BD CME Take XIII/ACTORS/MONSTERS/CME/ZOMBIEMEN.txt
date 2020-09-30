@@ -44,7 +44,7 @@ ACTOR CMEZombie_Man: ZombieMan Replaces ZombieMan
 	damagefactor "ExplosiveImpact", 0.6
 	DropItem "CMEv20bRifleSpawner"
 	DropItem "CMEv21PistolSpawner"
-	//DropItem "GrenadeAmmo" 15
+	//DropItem "CMEGrenadeAmmo" 15
 	Obituary "%o has been gunned down by a Zombie Soldier."
 	damagefactor "Taunt", 1.0
 	damagefactor "cut", 0.7

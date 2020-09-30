@@ -28,7 +28,7 @@ ACTOR CMEShotgunGuy1: ShotgunGuy Replaces ShotgunGuy
 	damagefactor "GibRemoving", 0.0
 	damagefactor "SSG", 50.0
 	PainChance "LowKick", 255
-	DropItem "GrenadeAmmo" 15
+	DropItem "CMEGrenadeAmmo" 15
 	DropItem "CMEv20bShotGun"
 	damagetype "Melee"
 	Monster

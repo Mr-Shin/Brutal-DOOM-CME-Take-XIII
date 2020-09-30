@@ -56,6 +56,7 @@ ACTOR CMEShell : Ammo Replaces Shell
 	Inventory.PickUpSound "shel/pkup"
 	+FLOORCLIP
 	+DONTGIB
+	Inventory.PickupMessage "Picked up 4 Shells."
 	Inventory.Amount 4
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 4
@@ -87,6 +88,7 @@ Actor CMERocketAmmo : Ammo Replaces RocketAmmo
 {
 +floorclip
 +dontgib
+Inventory.PickupMessage "Picked up 2 Rockets"
 Inventory.Amount 2
 Inventory.MaxAmount 300
 Ammo.BackpackAmount 2
@@ -121,6 +123,7 @@ Actor CMECell : Ammo Replaces Cell
 {
 +floorclip
 +dontgib
+Inventory.pickupmesage "Picked up a Cell"
 inventory.amount 20
 Inventory.maxamount 800
 Ammo.BackpackAmount 20

@@ -581,10 +581,13 @@ var int user_sgverticalspread;
 	player.startitem "CMEv20bMelee_Attacks"
 	player.startitem "CMEv21PistolAmmo", 15
 	player.startitem "CMEClip1", 30
-	player.startitem "CMEClip2", 30
-	player.startitem "CMEShell", 8
 	player.startitem "CMEv20bRifleAmmo", 31
 	player.startitem "CMEv20bShotgunAmmo", 8
+	player.startitem "CMEv20bMP40Ammo", 32
+	player.startitem "CMEv20bSSGAmmo", 2
+	player.startitem "CMEv20bBuzzsawAmmo", 1000
+	player.startitem "CMEv20bRocketRounds", 6
+	player.startitem "CMEv20bPlasmaAmmo", 50
 	player.startitem "CMEv20bHandGrenades", 1
 	player.Startitem "CMEGrenadeAmmo", 2
 	Player.StartItem "IsPlayingAsCMEDoomer", 1

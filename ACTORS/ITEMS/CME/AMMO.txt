@@ -123,7 +123,7 @@ Actor CMECell : Ammo Replaces Cell
 {
 +floorclip
 +dontgib
-Inventory.pickupmesage "Picked up a Cell"
+Inventory.PickupMessage "Picked up a Cell"
 inventory.amount 20
 Inventory.maxamount 800
 Ammo.BackpackAmount 20

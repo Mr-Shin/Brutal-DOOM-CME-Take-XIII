@@ -1379,6 +1379,24 @@ object ArmorShard2
     frame BON4 { light GREENITEM  }
 }
 
+object SuperArmorShard
+{
+    frame BON6 { light GREENITEM  }
+}
+
+pulselight GTRZOULSPHERE
+{
+    color 1.0 0.0 0.0
+    size 40
+    secondarySize 42
+    interval 2.0
+    offset 0 16 0
+}
+
+object CMELifeSphere2
+{
+    frame GZUL { light GTRZOULSPHERE }
+}
 
 pulselight CYANITEM
 {

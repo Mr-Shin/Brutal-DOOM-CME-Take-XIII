@@ -283,6 +283,7 @@ inventory.maxamount 1
 #include "ACTORS/ITEMS/CME/AMMO.txt"
 #include "ACTORS/ITEMS/CME/ARMOR.txt"
 #include "ACTORS/ITEMS/CME/BONUS.txt"
+#include "ACTORS/ITEMS/CME/SPHERES.txt"
 //Spawners
 #include "ACTORS/MISC/SPAWNERS/AMMO/CME/AMMOSPAWN.txt"
 //Weapons

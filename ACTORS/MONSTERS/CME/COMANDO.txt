@@ -452,7 +452,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	
 		
 	Death.OriginalGibz:
-	    TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+	    TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
         TNT1 AAA 0 A_CustomMissile ("MuchBlood", 1, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("XDeathChainArm", 35, 0, random (0, 360), 2, random (60, 120))
 		TNT1 A 0 A_CustomMissile ("XDeath1", 35, 0, random (0, 360), 2, random (60, 120))
@@ -623,7 +623,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	
     Death.Plasma: Death.Plasma2:
 	PBR1 A 6 A_Scream
-	TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+	TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
 	TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Ashes1", 32, 0, random (0, 360), 2, random (0, 180))
 	TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("Ashes2", 32, 0, random (0, 360), 2, random (0, 180))
 	TNT1 AAAA 0 A_CustomMissile ("BluePlasmaFireNonStatic", 32, 0, random (0, 360), 2, random (0, 180))
@@ -636,7 +636,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	Death.SuperPlasma:
         TNT1 A 0
         TNT1 A 0 A_XScream
-		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+		TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
         TNT1 A 0 A_NoBlocking
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
         TNT1 AAAA 0 A_CustomMissile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
@@ -678,7 +678,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
     Death.flames:
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+		TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
         TNT1 A 0 A_SpawnItem("BurningcHAINGUNGUY", 0, 10)
       Stop
 
@@ -701,7 +701,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
 		Goto Death.ExplosiveImpact
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
-		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+		TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
         TNT1 A 0 A_Jump(130,5)
         TNT1 A 0 A_GiveToTarget("ComandoFatality", 1)
         Stop
@@ -725,7 +725,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	    TNT1 A 0
 		TNT1 A 0 A_NoBlocking
 	    TNT1 A 0 A_Scream
-		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+		TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
         TNT1 A 0 A_GiveToTarget("ComandoFatality",1)
         Stop
 	
@@ -781,7 +781,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 A 0 A_CustomMissile ("XDeathChaingunguyHeadOnXDeath", 62, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_XScream
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0)
+		TNT1 A 0 A_SpawnItem ("CMEv20bMiniGun", 0, 5,0)
         MPSD AAAA 6 A_CustomMissile ("Brutal_LiquidBlood2", 64, 0, random (0, 360), 2, random (30, 60))
 		MPSD BBBBCCCC 2 A_CustomMissile ("Brutal_LiquidBlood2", 34, 0, random (0, 60), 2, random (30, 60))
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")

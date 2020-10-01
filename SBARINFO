@@ -105,10 +105,12 @@ InInventory not sbartype1, 1
 
 
 
-	
+	InInventory IsPlayingAsCMEDoomer, 1
+	{
 	drawimage "GRNDA", 255, 195;
-	drawnumber 4, SMALLFONT, red, Ammo GrenadeAmmo, 260, 185, 0;
-
+	drawnumber 4, SMALLFONT, red, Ammo CMEGrenadeAmmo, 260, 185, 0;
+	}
+	
 	drawimage ammoicon2, 310, 181;
 	drawimage ammoicon1, 310, 196;
 
@@ -151,15 +153,15 @@ statusbar normal // Standard Doom Status bar
 	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 239, 181;
 	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 239, 191;
 
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Clip2, 288, 173;
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Shell, 288, 179;
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo RocketAmmo, 288, 185;
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo Cell, 288, 191;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo CMEClip2, 288, 173;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo CMEShell, 288, 179;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo CMERocketAmmo, 288, 185;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammo CMECell, 288, 191;
 
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Clip2, 314, 173;
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Shell, 314, 179;
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity RocketAmmo, 314, 185;
-	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity Cell, 314, 191;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity CMEClip2, 314, 173;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity CMEShell, 314, 179;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity CMERocketAmmo, 314, 185;
+	drawnumber 3, INDEXFONT_DOOM, untranslated, ammocapacity CMECell, 314, 191;
 	gamemode deathmatch, teamgame
 	{
 		drawnumber 2, HUDFONT_DOOM, untranslated, frags, 138, 171;

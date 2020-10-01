@@ -36,7 +36,7 @@ Actor LightChestplate : BasicArmorPickup
 	Inventory.Pickupmessage "Picked up the Light Chestplate"
 	Inventory.Icon "ARM1E0"
 	Armor.SavePercent 40
-	Armor.SaveAmount 150
+	Armor.SaveAmount 125
     Inventory.PickupSound "ARMOR2"
 	States
 	{
@@ -58,7 +58,7 @@ Actor LightArmor2 : BasicArmorPickup
 	Inventory.Pickupmessage "Picked up the Light Armor"
 	Inventory.Icon "ARM1J0"
 	Armor.SavePercent 40
-	Armor.SaveAmount 100
+	Armor.SaveAmount 150
     Inventory.PickupSound "ARMOR"
 	States
 	{

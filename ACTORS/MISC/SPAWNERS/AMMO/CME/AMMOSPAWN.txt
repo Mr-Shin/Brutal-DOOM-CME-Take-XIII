@@ -12,11 +12,11 @@ Actor ClipBoxSpawner : RandomSpawner Replaces ClipBox
 {
 dropitem "CMEClip1Box2"
 dropitem "CMEClip1Box"
-dropitem "CMEClipBox24"
-dropitem "CMEClipBox21"
-dropitem "CMEClipBox23"
-dropitem "CMEClipBox2"
-dropitem "CMEClipBox22"
+dropitem "CMEClip2Box4"
+dropitem "CMEClip2Box1"
+dropitem "CMEClip2Box3"
+dropitem "CMEClip2Box"
+dropitem "CMEClip2Box2"
 }
 
 Actor ShellSpawner : RandomSpawner Replaces Shell

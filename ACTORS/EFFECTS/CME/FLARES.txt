@@ -6,3 +6,18 @@ Actor RedFlareArmor : RedFlare
 {
 scale 0.3
 }
+Actor LensFlareExtra : Flare_General
+{
+alpha 0.45
+scale 0.5
+states
+	{
+	Spawn:
+		LENP A 5 bright
+		stop
+	}
+}
+Actor RedFlareMedium2 : RedFlare
+{
+scale 0.4
+}

@@ -153,6 +153,7 @@ dropitem "QuakeArmorShard"
 dropitem "BloodArmorShard"
 dropitem "BloodArmorShard"
 dropitem "ArmorShard3"
+dropitem "SuperArmorShard"
 }
 
 Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
@@ -309,6 +310,34 @@ Actor ArmorShard3 : BasicArmorBonus// Replaces ArmorBonus
 		Loop
 	Spawn2:
 		ARSD A 1
+		Goto Spawn
+	}
+}
+
+Actor SuperArmorShard : BasicArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Super Armor Bonus."
+	Inventory.Icon "BON6A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 20
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+FLOORCLIP
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickUpSound "ABONUS"
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BON6 AAABCDB 2 //A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON6 A 2
 		Goto Spawn
 	}
 }

@@ -162,7 +162,7 @@ Actor HeavyChestplate : BasicArmorPickup// Replaces BlueArmor
 	{
 	Spawn:
 		ARM2 E 10
-		ARM4 FFFFF 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		ARM2 FFFFF 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
 		loop
 	}
 }

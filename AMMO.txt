@@ -1,6 +1,6 @@
 // Backpack ---------------------------------------------------------------
 
-ACTOR AmmoSuply : BackpackItem Replaces Backpack
+ACTOR AmmoSuply : BackpackItem
 {
 	Game Doom
 	SpawnID 144

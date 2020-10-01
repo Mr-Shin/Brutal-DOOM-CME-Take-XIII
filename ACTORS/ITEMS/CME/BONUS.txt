@@ -1,0 +1,314 @@
+
+ACTOR HealthBonusSpawn : RandomSpawner Replaces HealthBonus
+{
+dropitem "HealthPlus2"
+dropitem "HealthPlus3"
+dropitem "SoulHealthBonus"
+dropitem "HealthPlusBig"
+dropitem "StrongHealthPlus"
+dropitem "SuperHealthPlus"
+}
+
+
+
+//Health
+ACTOR HealthPlus2 : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 1
+	Inventory.MaxAmount 9999
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Picked up a Health Bonus"
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON3 ABCDCB 2 A_SpawnItem("BlueFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON3 A 2
+		Goto Spawn
+	}
+}
+
+ACTOR HealthPlus3 : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 2
+	Inventory.MaxAmount 9999
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Picked up a Health Bonus"
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON3 EFGHGF 1 A_SpawnItem("BlueFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON3 E 1
+		Goto Spawn
+	}
+}
+
+ACTOR SoulHealthBonus : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 4
+	Inventory.MaxAmount 9999
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Picked up a Soul Bonus"
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON3 IJKLKJ 2 A_SpawnItem("RedFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON3 IJKLKJ 2 A_SpawnItem("RedFlareSmall",0,7)
+		Goto Spawn
+	}
+}
+
+ACTOR HealthPlusBig : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 8
+	Inventory.MaxAmount 9999
+	inventory.pickupsound "soul/pkup"
+	Inventory.PickupMessage "Picked up a Small health pack"
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		BON3 MNOPQPON 1 A_SpawnItem("BlueFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON3 M 2
+		Goto Spawn
+	}
+}
+
+ACTOR StrongHealthPlus : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+FLOORCLIP
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 10
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "Picked up a Strong Health Bonus."
+	Inventory.PickUpSound "soul/pkup"
+	States
+	{
+	Spawn:
+		BON3 STUV 4
+		Loop
+	}
+}
+
+ACTOR SuperHealthPlus : Health
+{
+	Game Doom
+	SpawnID 152
+	+COUNTITEM
+	+FLOORCLIP
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.Amount 20
+	Inventory.MaxAmount 9999
+	Inventory.PickupMessage "Picked up a Super Health Bonus."
+	Inventory.PickUpSound "soul/pkup"
+	States
+	{
+	Spawn:
+		BON3 WXYZ 4
+		Loop
+	}
+}
+
+
+
+
+//Armor
+ACTOR ArmorBonusSpawn : RandomSpawner Replaces ArmorBonus
+{
+dropitem "ArmorShard2"
+dropitem "ArmorPlus"
+dropitem "HelmetArmorBonus"
+dropitem "QuakeArmorShard"
+dropitem "BloodArmorShard"
+dropitem "BloodArmorShard"
+dropitem "ArmorShard3"
+}
+
+Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	inventory.pickupsound "ABONUS"
+	Inventory.Icon "BON4A0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 1
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BON4 ABCD 2 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON4 A 2
+		Goto Spawn
+	}
+}
+
+Actor ArmorPlus : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	inventory.pickupsound "ABONUS"
+	Inventory.Icon "BON4E0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 2
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BON4 EFGH 1 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BON4 E 1
+		Goto Spawn
+	}
+}
+
+
+Actor HelmetArmorBonus : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Helmet"
+	Inventory.Icon "BON2A0"
+	Armor.Savepercent 33.335
+	inventory.pickupsound "ABONUS"
+	Armor.Saveamount 4
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		HLMB ABCD 2 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		HLMB A 2
+		Goto Spawn
+	}
+}
+
+Actor QuakeArmorShard : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "$GOTARMBONUS"
+	Inventory.Icon "QKABA0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 6
+	inventory.pickupsound "ABONUS3"
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	scale 0.7
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		QKAB A 2 A_SpawnItem("RedFlareSmall",0,7)
+		Loop
+	Spawn2:
+		QKAB A 2 A_SpawnItem("RedFlareSmall",0,7)
+		Goto Spawn
+	}
+}
+
+Actor BloodArmorShard : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up a Demonic Armor Bonus"
+	Inventory.Icon "BLABA0"
+	Armor.Savepercent 33.335
+	Armor.Saveamount 10
+	inventory.pickupsound "ABONUS2"
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        //TNT1 A 0 A_CheckSight ("Spawn2")
+		BLAB ABCD 2 A_SpawnItem("YellowFlareSmall",0,7)
+		Loop
+	Spawn2:
+		BLAB ABCD 2 A_SpawnItem("YellowFlareSmall",0,7)
+		Goto Spawn
+	}
+}
+
+Actor ArmorShard3 : BasicArmorBonus// Replaces ArmorBonus
+{
+	Game Doom
+	SpawnID 22
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up an Armor Shard"
+	Inventory.Icon "ARSDA0"
+	Armor.Savepercent 33.335
+	inventory.pickupsound "ABONUS"
+	Armor.Saveamount 15
+	Armor.Maxsaveamount 9999
+	+COUNTITEM
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight ("Spawn2")
+		ARSD ABCB 1 A_SpawnItem("GreenFlareSmall",0,7)
+		Loop
+	Spawn2:
+		ARSD A 1
+		Goto Spawn
+	}
+}

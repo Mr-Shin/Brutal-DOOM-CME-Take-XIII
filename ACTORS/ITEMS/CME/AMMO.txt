@@ -1,3 +1,6 @@
+
+//Pistol
+
 ACTOR CMEClip1 : Ammo 
 {
 	Game Doom
@@ -8,7 +11,7 @@ ACTOR CMEClip1 : Ammo
 	Ammo.BackpackAmount 20
 	inventory.pickupsound "clip1/pkup"
 	Ammo.BackpackMaxAmount 800
-	Inventory.Icon "CLIPC0"
+	Inventory.Icon "CLIPD0"
 	States
 	{
 	Spawn:
@@ -17,17 +20,13 @@ ACTOR CMEClip1 : Ammo
 	}
 }
 
-ACTOR CMEClip2 : Ammo replaces clip
+Actor CMEClip12 : CMEClip1
 {
-	Game Doom
+	Game DOOM
 	SpawnID 11
-	Inventory.PickupMessage "Picked up a High Caliber Magazine."
-	Inventory.Amount 20
-	Inventory.MaxAmount 500
-	Ammo.BackpackAmount 20
-	Ammo.BackpackMaxAmount 1000
-	Inventory.Icon "CLIPD0"
-	inventory.pickupsound "clip2/pkup"
+	Inventory.PickupMessage "Picked up a Low Caliber Magazine."
+	Inventory.Amount 10
+	inventory.pickupsound "clip1/pkup"
 	States
 	{
 	Spawn:
@@ -36,22 +35,187 @@ ACTOR CMEClip2 : Ammo replaces clip
 	}
 }
 
-
-ACTOR CMEClipBox2 : CMEClip2 replaces clipbox
+ACTOR CMEClip1Box1 : CMEClip1
 {
 	Game Doom
 	SpawnID 139
-	Inventory.PickupMessage "Picked up a box of rifle ammunition."
-	Inventory.Amount 100
+	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
+	Inventory.Amount 50
+	inventory.pickupsound "CBOX_2"
 	States
 	{
 	Spawn:
-		AMMO A -1
+		AMO3 A -1
 		Stop
 	}
 }
 
-ACTOR CMEShell : Ammo Replaces Shell
+ACTOR CMEClip1Box2 : CMEClip1
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
+	Inventory.Amount 25
+	inventory.pickupsound "CBOX_2"
+	States
+	{
+	Spawn:
+		AMO3 B -1
+		Stop
+	}
+}
+
+//Rifle
+
+ACTOR CMEClip2 : Ammo 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a High Caliber Magazine."
+	Inventory.Amount 20
+	Inventory.MaxAmount 500
+	Ammo.BackpackAmount 20
+	Ammo.BackpackMaxAmount 1000
+	Inventory.Icon "CLIPF0"
+	inventory.pickupsound "clip2/pkup"
+	States
+	{
+	Spawn:
+		CLIP E -1
+		Stop
+	}
+}
+
+
+ACTOR CMEClip22 : CMEClip2 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up a High Caliber Magazine."
+	Inventory.Amount 30
+	inventory.pickupsound "clip2/pkup"
+	States
+	{
+	Spawn:
+		CLIP F -1
+		Stop
+	}
+}
+
+
+ACTOR 2CMEClip2 : CMEClip2 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up 2 High Caliber Magazines."
+	inventory.pickupsound "clip2/pkup"
+	States
+	{
+	Spawn:
+		CLIP G -1
+		Stop
+	}
+}
+
+ACTOR 3CMEClip2 : CMEClip2 
+{
+	Game Doom
+	SpawnID 11
+	Inventory.PickupMessage "Picked up 3 High Caliber Magazines."
+	inventory.pickupsound "clip2/pkup"
+	States
+	{
+	Spawn:
+		CLIP H -1
+		Stop
+	}
+}
+
+
+
+ACTOR CMEClipBox2 : CMEClip2 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.Amount 100
+		inventory.pickupsound "CBOX_2"
+
+	States
+	{
+	Spawn:
+		AMO4 A -1
+		Stop
+	}
+}
+
+ACTOR CMEClipBox21 : CMEClip2 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.Amount 75
+		inventory.pickupsound "CBOX_2"
+
+	States
+	{
+	Spawn:
+		AMO4 B -1
+		Stop
+	}
+}
+
+ACTOR CMEClipBox22 : CMEClip2 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.Amount 200
+		inventory.pickupsound "CBOX_2"
+
+	States
+	{
+	Spawn:
+		AMO4 C -1
+		Stop
+	}
+}
+
+ACTOR CMEClipBox23 : CMEClip2 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.Amount 80
+		inventory.pickupsound "CBOX_2"
+
+	States
+	{
+	Spawn:
+		AMO4 D -1
+		Stop
+	}
+}
+
+ACTOR CMEClipBox24 : CMEClip2 
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of High Caliber Ammunition."
+	Inventory.Amount 50
+		inventory.pickupsound "CBOX_2"
+
+	States
+	{
+	Spawn:
+		AMO4 E -1
+		Stop
+	}
+}
+
+
+//Shells
+ACTOR CMEShell : Ammo 
 {
 	Inventory.PickUpSound "shel/pkup"
 	+FLOORCLIP
@@ -61,19 +225,79 @@ ACTOR CMEShell : Ammo Replaces Shell
 	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 4
 	Ammo.BackpackMaxAmount 600
+	Inventory.Icon "SHELC0"
 	States
 	{
 	Spawn:
-		SHEL A -1
+		SHEL B -1
 		Stop
 	}
 }
 
-ACTOR CMEShellBox : CMEShell Replaces SHellBox
+ACTOR CMEShell2 : CMEShell 
+{
+	Game DOOM
+	Inventory.PickUpSound "shel/pkup"
+	Inventory.PickupMessage "Picked up 4 Shells."
+	Inventory.Amount 4
+	States
+	{
+	Spawn:
+		SHEL C -1
+		Stop
+	}
+}
+
+ACTOR CMEShell3 : CMEShell 
+{
+	Game DOOM
+	Inventory.PickUpSound "shel/pkup"
+	Inventory.PickupMessage "Picked up 2 Shells."
+	Inventory.Amount 2
+	States
+	{
+	Spawn:
+		SHEL D -1
+		Stop
+	}
+}
+
+ACTOR CMEShell4 : CMEShell 
+{
+	Game DOOM
+	Inventory.PickUpSound "shel/pkup"
+	Inventory.PickupMessage "Picked up 5 Shells."
+	Inventory.Amount 5
+	States
+	{
+	Spawn:
+		SHEL E -1
+		Stop
+	}
+} 
+
+ACTOR CMEShell5 : CMEShell 
+{
+	Game DOOM
+	Inventory.PickUpSound "shel/pkup"
+	Inventory.PickupMessage "Picked up 6 Shells."
+	Inventory.Amount 6
+	States
+	{
+	Spawn:
+		SHEL F -1
+		Stop
+	}
+} 
+
+
+
+ACTOR CMEShellBox : CMEShell
 {
 	Game Doom
 	SpawnID 143
-	Inventory.PickupMessage "Picked up a box of 20 Shells"
+		Inventory.PickUpSound "SHELPK2"
+	Inventory.PickupMessage "Picked up a box of 20 Shells."
 	Inventory.Amount 20
 	Scale 0.9
 	States
@@ -84,15 +308,83 @@ ACTOR CMEShellBox : CMEShell Replaces SHellBox
 	}
 }
 
-Actor CMERocketAmmo : Ammo Replaces RocketAmmo
+ACTOR CMEShellBox2 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+		Inventory.PickUpSound "SHELPK2"
+	Inventory.PickupMessage "Picked up a box of 10 Shells."
+	Inventory.Amount 10
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX C -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox3 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+		Inventory.PickUpSound "SHELPK2"
+	Inventory.PickupMessage "Picked up a box of 15 Shells."
+	Inventory.Amount 15
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX D -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox4 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+		Inventory.PickUpSound "SHELPK2"
+	Inventory.PickupMessage "Picked up a box of 30 Shells."
+	Inventory.Amount 30
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX E -1
+		Stop
+	}
+}
+
+ACTOR CMEShellBox5 : CMEShell
+{
+	Game Doom
+	SpawnID 143
+		Inventory.PickUpSound "SHELPK2"
+	Inventory.PickupMessage "Picked up a box of 50 Shells."
+	Inventory.Amount 50
+	Scale 0.9
+	States
+	{
+	Spawn:
+		SBOX F -1
+		Stop
+	}
+}
+
+//Rockets
+Actor CMERocketAmmo : Ammo 
 {
 +floorclip
 +dontgib
-Inventory.PickupMessage "Picked up 2 Rockets"
-Inventory.Amount 2
+Inventory.PickupMessage "Picked up a Rocket."
+Inventory.Amount 1
 Inventory.MaxAmount 300
-Ammo.BackpackAmount 2
+Ammo.BackpackAmount 1
 Ammo.BackpackMaxAmount 600
+	inventory.pickupsound "misc/rocket_pickup"
+	inventory.ICON "ROCKC0"
+
 	States
 	{
 	Spawn:
@@ -102,12 +394,30 @@ Ammo.BackpackMaxAmount 600
 
 }
 
-Actor CMERocketBox : CMERocketAmmo Replaces RocketBox
+Actor CMERocketAmmo2 : CMERocketAmmo 
+{
+	Game DOOM
+	Inventory.PickupMessage "Picked up 2 Rockets."
+	Inventory.Amount 2
+	inventory.pickupsound "misc/rocket_pickup"
+	States
+	{
+	Spawn:
+		ROCK C -1
+		Stop
+	}
+
+}
+
+
+
+Actor CMERocketBox : CMERocketAmmo 
 {
 Game DOOM
 SpawnID 143
-Inventory.PickupMessage "Picked up a box of Rockets"
+Inventory.PickupMessage "Picked up a box of 6 Rockets."
 Inventory.Amount 6
+	inventory.pickupsound "ROCKT4"
 Scale 0.9
 States
 	{
@@ -118,33 +428,126 @@ States
 	
 }
 
-
-Actor CMECell : Ammo Replaces Cell
+Actor CMERocketBox2 : CMERocketAmmo 
 {
-+floorclip
-+dontgib
-Inventory.PickupMessage "Picked up a Cell"
-inventory.amount 20
-Inventory.maxamount 800
-Ammo.BackpackAmount 20
-Ammo.backpackmaxamount 1600
-	States
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a box of 3 Rockets."
+Inventory.Amount 3
+	inventory.pickupsound "ROCKT4"
+Scale 0.9
+States
 	{
 	Spawn:
-		CELL A -1
+		BROK C -1
 		Stop
 	}
 	
 }
 
-Actor CMECellBox : CMECell Replaces CellPack
+Actor CMERocketBox3 : CMERocketAmmo 
 {
 Game DOOM
 SpawnID 143
-Inventory.PickupMessage "Picked up a Cell Box"
-Inventory.Amount 100
+Inventory.PickupMessage "Picked up a box of 10 Rockets."
+Inventory.Amount 10
+	inventory.pickupsound "ROCKT4"
 Scale 0.9
 States
+	{
+	Spawn:
+		BROK D -1
+		Stop
+	}
+	
+}
+
+Actor CMERocketBox4 : CMERocketAmmo 
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a box of 5 Rockets."
+Inventory.Amount 5
+	inventory.pickupsound "ROCKT4"
+Scale 0.9
+States
+	{
+	Spawn:
+		BROK E -1
+		Stop
+	}
+	
+}
+
+
+
+
+Actor CMERocketBox5 : CMERocketAmmo 
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a box of 15 Rockets."
+Inventory.Amount 15
+	inventory.pickupsound "ROCKT4"
+Scale 0.9
+States
+	{
+	Spawn:
+		BROK F -1
+		Stop
+	}
+	
+}
+
+Actor CMERocketBox6 : CMERocketAmmo 
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a box of 5 Rockets."
+Inventory.Amount 5
+	inventory.pickupsound "ROCKT4"
+Scale 0.9
+States
+	{
+	Spawn:
+		BROK G -1
+		Stop
+	}
+	
+}
+
+Actor CMERocketBox7 : CMERocketAmmo 
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a box of 20 Rockets."
+Inventory.Amount 20
+	inventory.pickupsound "ROCKT4"
+Scale 0.9
+States
+	{
+	Spawn:
+		BROK H -1
+		Stop
+	}
+	
+}
+
+
+//Cells
+Actor CMECell : Ammo 
+{
++floorclip
++dontgib
+Inventory.PickupMessage "Picked up a Cell."
+inventory.amount 20
+Inventory.maxamount 800
+Ammo.BackpackAmount 20
+Ammo.backpackmaxamount 1600
+Inventory.pickupsound "misc/cell_pickup"
+Inventory.Icon "CELLB0"
+
+	States
 	{
 	Spawn:
 		CELL B -1
@@ -152,6 +555,112 @@ States
 	}
 	
 }
+
+Actor CMECell2 : CMECell 
+{
+Game DOOM
+Inventory.PickupMessage "Picked up a Cell."
+inventory.amount 30
+Inventory.pickupsound "misc/cell_pickup"
+
+	States
+	{
+	Spawn:
+		CELL C -1
+		Stop
+	}
+	
+}
+
+Actor CMECell3 : CMECell 
+{
+Game DOOM
+Inventory.PickupMessage "Picked up a Cell."
+inventory.amount 25
+Inventory.pickupsound "misc/cell_pickup"
+
+	States
+	{
+	Spawn:
+		CELL D -1
+		Stop
+	}
+	
+}
+
+
+
+
+Actor CMECellBox : CMECell
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a Cell Box."
+Inventory.Amount 75
+Inventory.pickupsound "CELL_P3"
+Scale 0.9
+States
+	{
+	Spawn:
+		CELP B -1
+		Stop
+	}
+	
+}
+
+
+Actor CMECellBox2 : CMECell
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a Cell Box."
+Inventory.Amount 200
+Inventory.pickupsound "CELL_P3"
+Scale 0.9
+States
+	{
+	Spawn:
+		CELP C -1 
+		Stop
+	}
+	
+}
+
+Actor CMECellBox3 : CMECell
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a Cell Box."
+Inventory.Amount 100
+Inventory.pickupsound "CELL_P3"
+Scale 0.9
+States
+	{
+	Spawn:
+		CELP DEFG 1 BRIGHT
+		Stop
+	}
+	
+}
+
+Actor CMECellBox4 : CMECell
+{
+Game DOOM
+SpawnID 143
+Inventory.PickupMessage "Picked up a Cell Box."
+Inventory.Amount 50
+Inventory.pickupsound "CELL_P3"
+Scale 0.9
+States
+	{
+	Spawn:
+		CELP H -1 
+		Stop
+	}
+	
+}
+
+
 
 ACTOR CMEGas : Ammo
 {
@@ -196,13 +705,33 @@ ACTOR CMEGrenadeBox : CMEGrenadeAmmo
 {
 	Game Doom
 	SpawnID 139
-	Inventory.PickupMessage "Picked up a box of grenades."
+	Inventory.PickupMessage "Picked up a box of Grenades."
 	Inventory.Amount 10
 	States
 	{
 	Spawn:
 		GRND H -1
 		Stop
+	}
+}
+
+ACTOR CMEAmmoSuply : BackpackItem replaces Backpack
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	Inventory.PickupMessage "$GOTBACKPACK"
+	States
+	{
+	Spawn:
+		BPAK A -1
+		Stop
+    Pickup:
+        TNT1 A 0 A_GiveInventory("ShellBox", 1)
+        TNT1 A 0 A_GiveInventory("ClipBox", 1)
+        TNT1 A 0 A_GiveInventory("CellPack", 1)
+        TNT1 A 0 A_GiveInventory("RocketBox", 1)
+        Stop
 	}
 }
 	

@@ -6,6 +6,7 @@ inventory.pickupsound "weapons/chainsaw/draw"
 //inventory.pickupsound "none"
 	Weapon.UpSound "none"
 weapon.readysound "weapons/chainsaw/idle"
+Inventory.PickupMessage "A Chainsaw! FIND SOME MEAT!!!!"
     +WEAPON.NOAUTOAIM
 	+WEAPON.AXEBLOOD
 	+FORCEXYBILLBOARD

@@ -1,0 +1,69 @@
+Actor ClipSpawner : RandomSpawner Replaces Clip
+{
+dropitem "CMEClip12"
+dropitem "CMEClip1"
+dropitem "CMEClip2"
+dropitem "CMEClip22"
+dropitem "2CMEClip2"
+dropitem "3CMEClip2"
+}
+
+Actor ClipBoxSpawner : RandomSpawner Replaces ClipBox
+{
+dropitem "CMEClip1Box2"
+dropitem "CMEClip1Box"
+dropitem "CMEClipBox24"
+dropitem "CMEClipBox21"
+dropitem "CMEClipBox23"
+dropitem "CMEClipBox2"
+dropitem "CMEClipBox22"
+}
+
+Actor ShellSpawner : RandomSpawner Replaces Shell
+{
+dropitem "CMEShell3"
+dropitem "CMEShell2"
+dropitem "CMEShell"
+dropitem "CMEShell4"
+dropitem "CMEShell5"
+}
+
+Actor ShellBoxSpawner : RandomSpawner Replaces ShellBox
+{
+dropitem "CMEShellBox2"
+dropitem "CMEShellBox3"
+dropitem "CMEShellBox"
+dropitem "CMEShellBox4"
+dropitem "CMEShellBox5"
+}
+
+Actor RocketSpawner : RandomSpawner Replaces RocketAmmo
+{
+dropitem "CMERocketAmmo"
+dropitem "CMERocketAmmo2"
+}
+
+Actor RocketBoxSpawner : RandomSpawner Replaces RocketBox
+{
+dropitem "CMERocketBox2"
+dropitem "CMERocketBox4"
+dropitem "CMERocketBox6"
+dropitem "CMERocketBox"
+dropitem "CMERocketBox5"
+dropitem "CMERocketBox7"
+}
+
+Actor CellSpawner : RandomSpawner Replaces Cell
+{
+dropitem "CMECell"
+dropitem "CMECell3"
+dropitem "CMECell2"
+}
+
+Actor CellPackSpawner : RandomSpawner Replaces CellPack
+{
+dropitem "CMECellBox4"
+dropitem "CMECellBox"
+dropitem "CMECellBox3"
+dropitem "CMECellBox2"
+}

@@ -1357,3 +1357,43 @@ object CandleVanilla
 {
 frame CAND { light SMALLREDTORCH }
 }
+
+//New
+object HealthPlus2
+{
+    frame BON3 { light BLUEITEM }
+}
+
+object StrongHealthPlus
+{
+    frame BON3 { light CYANITEM  }
+}
+
+object SuperHealthPlus
+{
+    frame BON3 { light REDITEM  }
+}
+
+object ArmorShard2
+{
+    frame BON4 { light GREENITEM  }
+}
+
+
+pulselight CYANITEM
+{
+    color 0.1 0.6 1.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}
+
+pulselight REDITEM
+{
+    color 1.0 0.0 0.0
+    size 14
+    secondarySize 16
+    interval 0.1
+    offset 0 5 0
+}

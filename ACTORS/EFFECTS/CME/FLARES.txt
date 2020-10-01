@@ -1,0 +1,8 @@
+Actor YellowFlareArmor : YellowFlare
+{
+scale 0.25
+}
+Actor RedFlareArmor : RedFlare
+{
+scale 0.3
+}

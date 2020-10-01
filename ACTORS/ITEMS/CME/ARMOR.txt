@@ -1,0 +1,313 @@
+// Green Armor Variants --------------------------------------------------------
+
+Actor LightVest : BasicArmorPickup
+{
+	Game Doom
+    Scale 0.8
+	//Scale 1.3
+	SpawnID 68
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Light Vest"
+	Inventory.Icon "ARM1C0"
+	Armor.SavePercent 40
+	Armor.SaveAmount 100
+    Inventory.PickupSound "D3ARMOR"
+	States
+	{
+	Spawn:
+		ARM1 C 10
+		ARM1 DDDDDD 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+		loop
+	}
+
+}
+
+
+
+Actor LightChestplate : BasicArmorPickup
+{
+	Game Doom
+    //Scale 0.8
+	Scale 1.3
+	SpawnID 68
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Light Chestplate"
+	Inventory.Icon "ARM1E0"
+	Armor.SavePercent 40
+	Armor.SaveAmount 150
+    Inventory.PickupSound "ARMOR2"
+	States
+	{
+	Spawn:
+		ARM1 E 10
+		ARM1 FFFFFF 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+		loop
+	}
+}
+
+Actor LightArmor2 : BasicArmorPickup 
+{
+	Game Doom
+    //Scale 0.8
+	Scale 1.3
+	SpawnID 68
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Light Armor"
+	Inventory.Icon "ARM1J0"
+	Armor.SavePercent 40
+	Armor.SaveAmount 100
+    Inventory.PickupSound "ARMOR"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		ARM1 J 10
+		ARM1 JJJJJJ 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+		loop
+	Spawn2:
+		ARM1 J 19
+		Goto Spawn
+	}
+}
+
+Actor LightTechArmor : BasicArmorPickup
+{
+	Game Doom
+	SpawnID 68
+	Radius 20
+	Height 16
+	scale 0.9
+	Inventory.Pickupmessage "Picked up the Light Tech Armor"
+	Inventory.Icon "ARM1G0"
+	Armor.SavePercent 40
+	Armor.SaveAmount 175
+    Inventory.PickupSound "ARMOR3"
+	States
+	{
+	Spawn:
+		ARM1 GHI 1 bright A_SpawnItem("GreenFlareMedium",0,10)
+		loop
+	}
+}
+
+Actor MediumArmor : BasicArmorPickup 
+{
+  Game Doom
+  Radius 20
+  Height 20
+  Scale 1.30
+	+FLOORCLIP
+	+DONTGIB
+  Inventory.Pickupmessage "Picked up the Medium Tech Armor"
+  Inventory.PickupSound "ARMOR"
+  Inventory.Icon "ARM1K0"
+  Armor.Savepercent 50
+  Armor.Saveamount 200
+  States
+  {
+	Spawn:
+		TNT1 A 0 A_CheckSight ("Spawn2")
+		ARM1 KK 6 bright 
+		ARM1 LLMMLL 3
+		TNT1 A 0 A_SpawnItem("YellowFlareArmor",0,10)
+		loop
+	Spawn2:	
+		ARM1 KLM 10
+		Goto Spawn
+  }
+}
+
+
+// Blue Armor Variants ---------------------------------------------------------
+
+Actor HeavyVest : BasicArmorPickup 
+{
+	Game Doom
+    Scale 0.8
+	SpawnID 69
+	//Scale 1.3
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Heavy Vest"
+	Inventory.Icon "ARM2C0"
+	Armor.Savepercent 60
+	Armor.Saveamount 225
+    Inventory.PickupSound "D3ARMOR"
+	States
+	{
+	Spawn:
+		ARM2 C 10
+		ARM2 DDDDD 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		loop
+	}
+}
+
+Actor HeavyChestplate : BasicArmorPickup// Replaces BlueArmor
+{
+	Game Doom
+    //Scale 0.8
+	SpawnID 69
+	Scale 1.3
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Heavy Chestplate"
+	Inventory.Icon "ARM2E0"
+	Armor.Savepercent 60
+	Armor.Saveamount 250
+    Inventory.PickupSound "ARMOR2"
+	States
+	{
+	Spawn:
+		ARM2 E 10
+		ARM4 FFFFF 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		loop
+	}
+}
+
+
+Actor HeavyArmor2 : BasicArmorPickup 
+{
+	Game Doom
+    //Scale 0.8
+	SpawnID 69
+	Scale 1.3
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Heavy Combat Armor"
+	Inventory.Icon "ARM2J0"
+	Armor.Savepercent 60
+	Armor.Saveamount 275
+    Inventory.PickupSound "ARMOR"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CheckSight("Spawn2")
+		ARM2 J 10
+		ARM2 JJJJJ 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		loop
+	Spawn2:
+		ARM2 J 19
+		Goto Spawn	
+	}
+}
+
+
+Actor HeavyTechArmor : BasicArmorPickup// Replaces BlueArmor
+{
+	Game Doom
+    Scale 0.9
+	SpawnID 69
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Heavy Tech Armor"
+	Inventory.Icon "ARM2G0"
+	Armor.Savepercent 60
+	Armor.Saveamount 300
+    Inventory.PickupSound "ARMOR3"
+	States
+	{
+	Spawn:
+		ARM2 GHI 1 bright A_SpawnItem("BlueFlareMedium3",0,10)
+		loop
+	}
+}
+
+//Demon Tech Armor Variants ----------------------------------------------------
+
+Actor DemonVest : BasicArmorPickup //Replaces BlueArmor
+{
+	Game Doom
+    Scale 0.8
+	SpawnID 69
+	//Scale 1.3
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Demonic Vest and Boots"
+	Inventory.Icon "ARM3A0"
+	Armor.Savepercent 80
+	Armor.Saveamount 350
+    Inventory.PickupSound "ARMOR4"
+	States
+	{
+	Spawn:
+		ARM3 A 10
+		ARM3 BBBBB 2 bright A_SpawnItem("RedFlareMedium",0,10)
+		loop
+	}
+}
+
+Actor DemonTechArmor : BasicArmorPickup //Replaces BlueArmor
+{
+	Game Doom
+    Scale 0.9
+	SpawnID 69
+	//Scale 1.3
+	Radius 20
+	Height 16
+	Inventory.Pickupmessage "Picked up the Demon Tech Armor"
+	Inventory.Icon "ARM3C0"
+	Armor.Savepercent 80
+	Armor.Saveamount 400
+    Inventory.PickupSound "ARMOR4"
+	States
+	{
+	Spawn:
+		ARM3 CDE 1 bright A_SpawnItem("RedFlareMedium",0,10)
+		loop
+	}
+}
+
+Actor EliteArmor : BasicArmorPickup 
+{
+  Game Doom
+  Radius 20
+  Height 20
+  Scale 1.30
+	+FLOORCLIP
+	+DONTGIB
+  Inventory.Pickupmessage "Picked up the Elite Tech Armor"
+  Inventory.PickupSound "ARMOR"
+  Inventory.Icon "ARM3F0"
+  Armor.Savepercent 80
+  Armor.Saveamount 450
+  States
+  {
+	Spawn:
+		TNT1 A 0 A_CheckSight ("Spawn2")
+		ARM3 FF 6 bright 
+		ARM3 GGHHGG 3
+		TNT1 A 0 A_SpawnItem("RedFlareArmor",0,10)
+		loop
+	Spawn2:	
+		ARM3 FGH 10
+		Goto Spawn
+  }
+}
+
+
+
+//Spawn ------------------------------------------------------------------------
+
+Actor LightArmorSpawn : RandomSpawner Replaces GreenArmor
+{
+dropitem "LightVest"
+dropitem "LightChestplate"
+dropitem "LightArmor2"
+dropitem "LightTechArmor"
+dropitem "MediumArmor"
+}
+
+Actor HeavyArmorSpawn : RandomSpawner Replaces BlueArmor
+{
+dropitem "HeavyVest"
+dropitem "HeavyChestplate"
+dropitem "HeavyArmor2"
+dropitem "HeavyTechArmor"
+dropitem "DemonVest"
+dropitem "DemonTechArmor"
+dropitem "EliteVest"
+}
+

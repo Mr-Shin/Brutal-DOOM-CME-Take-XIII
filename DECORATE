@@ -277,9 +277,14 @@ inventory.maxamount 1
 #include "ACTORS/EFFECTS/CME/Tracers.txt"
 #include "ACTORS/EFFECTS/CME/PUFF.txt"
 #include "ACTORS/EFFECTS/CME/Casing.txt"
+#include "ACTORS/EFFECTS/CME/Flares.txt"
 //CME
 //Items
 #include "ACTORS/ITEMS/CME/AMMO.txt"
+#include "ACTORS/ITEMS/CME/ARMOR.txt"
+#include "ACTORS/ITEMS/CME/BONUS.txt"
+//Spawners
+#include "ACTORS/MISC/SPAWNERS/AMMO/CME/AMMOSPAWN.txt"
 //Weapons
 #include "ACTORS/WEAPONS/CME/MISC/WeaponSpawners.txt"
 #include "ACTORS/WEAPONS/CME/MISC/WEAPONTEMPLATE.txt"
@@ -308,5 +313,6 @@ inventory.maxamount 1
 #include "ACTORS/MONSTERS/CME/COMANDO.txt"
 #include "Actors/Monsters/CME/REVENANT.txt"
 #include "ACTORS/Monsters/CME/Mancubus.txt"
+#include "ACTORS/MOnsters/CME/Nazis.txt"
 //Blood
 #include "Actors/EFFECTS/CME/Gore.txt"

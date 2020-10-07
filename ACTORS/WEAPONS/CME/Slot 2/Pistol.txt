@@ -93,8 +93,7 @@ ACTOR CMEv21BrutalPistol : CMEWeapon
 		PIST F 1 A_WeaponReady(WRF_ALLOWRELOAD)
 		TNT1 A 0 A_Takeinventory("PistolFireAnimation1",1)		
 		TNT1 A 0 A_JumpIfInventory("GoWeaponSpecialAbility",1,"DualWield")
-		
-		Loop
+		Goto Ready
 		
 		
 		
@@ -124,8 +123,9 @@ ACTOR CMEv21BrutalPistol : CMEWeapon
 		TNT1 A 0 A_Takeinventory("LostSoulSelected",1)
 		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
 		TNT1 A 0 A_Takeinventory("HasBarrel",1)
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
-		TNT1 AAAAAAAA 1 A_Raise
+		TNT1 A 1
+		TNT1 A 1 A_Raise
+		TNT1 AAAAAAAAAA 0 A_Raise
 		Goto SelectAnimation
 		
 		

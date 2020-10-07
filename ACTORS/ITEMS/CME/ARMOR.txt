@@ -1,6 +1,6 @@
 // Green Armor Variants --------------------------------------------------------
 
-Actor LightVest : BasicArmorPickup
+Actor CMELightVest : BasicArmorPickup
 {
 	Game Doom
     //Scale 0.8
@@ -8,7 +8,7 @@ Actor LightVest : BasicArmorPickup
 	SpawnID 68
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Light Vest"
+	Inventory.Pickupmessage "Picked up the Light Vest."
 	Inventory.Icon "ARM1C0"
 	Armor.SavePercent 40
 	Armor.SaveAmount 100
@@ -25,7 +25,7 @@ Actor LightVest : BasicArmorPickup
 
 
 
-Actor LightChestplate : BasicArmorPickup
+Actor CMELightChestplate : BasicArmorPickup
 {
 	Game Doom
     //Scale 0.8
@@ -33,7 +33,7 @@ Actor LightChestplate : BasicArmorPickup
 	SpawnID 68
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Light Chestplate"
+	Inventory.Pickupmessage "Picked up the Light Chestplate."
 	Inventory.Icon "ARM1E0"
 	Armor.SavePercent 40
 	Armor.SaveAmount 125
@@ -44,10 +44,14 @@ Actor LightChestplate : BasicArmorPickup
 		ARM1 E 10
 		ARM1 FFFFFF 2 bright A_SpawnItem("GreenFlareMedium",0,10)
 		loop
+		ReplaceToggle:
+		TNT1 A 1
+		TNT1 A 0 A_SpawnItemEx("Clip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
 	}
 }
 
-Actor LightArmor2 : BasicArmorPickup 
+Actor CMELightArmor : BasicArmorPickup 
 {
 	Game Doom
     //Scale 0.8
@@ -55,7 +59,7 @@ Actor LightArmor2 : BasicArmorPickup
 	SpawnID 68
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Light Armor"
+	Inventory.Pickupmessage "Picked up the Light Armor."
 	Inventory.Icon "ARM1J0"
 	Armor.SavePercent 40
 	Armor.SaveAmount 150
@@ -73,14 +77,14 @@ Actor LightArmor2 : BasicArmorPickup
 	}
 }
 
-Actor LightTechArmor : BasicArmorPickup
+Actor CMELightTechArmor : BasicArmorPickup
 {
 	Game Doom
 	SpawnID 68
 	Radius 20
 	Height 16
 	scale 1.2
-	Inventory.Pickupmessage "Picked up the Light Tech Armor"
+	Inventory.Pickupmessage "Picked up the Light Tech Armor."
 	Inventory.Icon "ARM1G0"
 	Armor.SavePercent 40
 	Armor.SaveAmount 175
@@ -93,7 +97,7 @@ Actor LightTechArmor : BasicArmorPickup
 	}
 }
 
-Actor MediumArmor : BasicArmorPickup 
+Actor CMEMediumArmor : BasicArmorPickup 
 {
   Game Doom
   Radius 20
@@ -101,8 +105,8 @@ Actor MediumArmor : BasicArmorPickup
     Scale 1.2
 	+FLOORCLIP
 	+DONTGIB
-  Inventory.Pickupmessage "Picked up the Medium Tech Armor"
-  Inventory.PickupSound "ARMOR"
+  Inventory.Pickupmessage "Picked up the Medium Tech Armor."
+  Inventory.PickupSound "ARMOR3"
   Inventory.Icon "ARM1K0"
   Armor.Savepercent 50
   Armor.Saveamount 200
@@ -123,14 +127,14 @@ Actor MediumArmor : BasicArmorPickup
 
 // Blue Armor Variants ---------------------------------------------------------
 
-Actor HeavyVest : BasicArmorPickup 
+Actor CMEHeavyVest : BasicArmorPickup 
 {
 	Game Doom
 	SpawnID 69
 	Scale 1.0
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Heavy Vest"
+	Inventory.Pickupmessage "Picked up the Heavy Vest."
 	Inventory.Icon "ARM2C0"
 	Armor.Savepercent 60
 	Armor.Saveamount 225
@@ -144,7 +148,7 @@ Actor HeavyVest : BasicArmorPickup
 	}
 }
 
-Actor HeavyChestplate : BasicArmorPickup// Replaces BlueArmor
+Actor CMEHeavyChestplate : BasicArmorPickup// Replaces BlueArmor
 {
 	Game Doom
     //Scale 0.8
@@ -152,7 +156,7 @@ Actor HeavyChestplate : BasicArmorPickup// Replaces BlueArmor
     Scale 1.3
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Heavy Chestplate"
+	Inventory.Pickupmessage "Picked up the Heavy Chestplate."
 	Inventory.Icon "ARM2E0"
 	Armor.Savepercent 60
 	Armor.Saveamount 250
@@ -167,7 +171,7 @@ Actor HeavyChestplate : BasicArmorPickup// Replaces BlueArmor
 }
 
 
-Actor HeavyArmor2 : BasicArmorPickup 
+Actor CMEHeavyArmor : BasicArmorPickup 
 {
 	Game Doom
     //Scale 0.8
@@ -175,7 +179,7 @@ Actor HeavyArmor2 : BasicArmorPickup
     Scale 1.3
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Heavy Combat Armor"
+	Inventory.Pickupmessage "Picked up the Heavy Combat Armor."
 	Inventory.Icon "ARM2J0"
 	Armor.Savepercent 60
 	Armor.Saveamount 275
@@ -194,14 +198,14 @@ Actor HeavyArmor2 : BasicArmorPickup
 }
 
 
-Actor HeavyTechArmor : BasicArmorPickup// Replaces BlueArmor
+Actor CMEHeavyTechArmor : BasicArmorPickup// Replaces BlueArmor
 {
 	Game Doom
     Scale 1.2
 	SpawnID 69
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Heavy Tech Armor"
+	Inventory.Pickupmessage "Picked up the Heavy Tech Armor."
 	Inventory.Icon "ARM2G0"
 	Armor.Savepercent 60
 	Armor.Saveamount 300
@@ -216,7 +220,7 @@ Actor HeavyTechArmor : BasicArmorPickup// Replaces BlueArmor
 
 //Demon Tech Armor Variants ----------------------------------------------------
 
-Actor DemonVest : BasicArmorPickup //Replaces BlueArmor
+Actor CMEDemonVest : BasicArmorPickup //Replaces BlueArmor
 {
 	Game Doom
     Scale 1.0
@@ -224,7 +228,7 @@ Actor DemonVest : BasicArmorPickup //Replaces BlueArmor
 	//Scale 1.3
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Demonic Vest and Boots"
+	Inventory.Pickupmessage "Picked up the Demonic Vest."
 	Inventory.Icon "ARM3A0"
 	Armor.Savepercent 80
 	Armor.Saveamount 350
@@ -238,7 +242,7 @@ Actor DemonVest : BasicArmorPickup //Replaces BlueArmor
 	}
 }
 
-Actor DemonTechArmor : BasicArmorPickup //Replaces BlueArmor
+Actor CMEDemonTechArmor : BasicArmorPickup //Replaces BlueArmor
 {
 	Game Doom
     Scale 1.2
@@ -246,7 +250,7 @@ Actor DemonTechArmor : BasicArmorPickup //Replaces BlueArmor
 	//Scale 1.3
 	Radius 20
 	Height 16
-	Inventory.Pickupmessage "Picked up the Demon Tech Armor"
+	Inventory.Pickupmessage "Picked up the Demon Tech Armor."
 	Inventory.Icon "ARM3C0"
 	Armor.Savepercent 80
 	Armor.Saveamount 400
@@ -259,7 +263,7 @@ Actor DemonTechArmor : BasicArmorPickup //Replaces BlueArmor
 	}
 }
 
-Actor EliteArmor : BasicArmorPickup 
+Actor CMEEliteArmor : BasicArmorPickup 
 {
   Game Doom
   Radius 20
@@ -267,8 +271,8 @@ Actor EliteArmor : BasicArmorPickup
   Scale 1.3
 	+FLOORCLIP
 	+DONTGIB
-  Inventory.Pickupmessage "Picked up the Elite Tech Armor"
-  Inventory.PickupSound "ARMOR"
+  Inventory.Pickupmessage "Picked up the Elite Tech Armor."
+  Inventory.PickupSound "ARMOR4"
   Inventory.Icon "ARM3F0"
   Armor.Savepercent 80
   Armor.Saveamount 450
@@ -290,23 +294,608 @@ Actor EliteArmor : BasicArmorPickup
 
 //Spawn ------------------------------------------------------------------------
 
-Actor LightArmorSpawn : RandomSpawner Replaces GreenArmor
+Actor CMELightArmorSpawner  Replaces GreenArmor
 {
-dropitem "LightVest"
-dropitem "LightChestplate"
-dropitem "LightArmor2"
-dropitem "LightTechArmor"
-dropitem "MediumArmor"
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnLightArmor", "SpawnLightChestplate", "SpawnLightVest", "SpawnLightTechArmor", "SpawnMediumArmor")
+		Stop	
+		DiceProg:
+		DiceTier1:
+			TNT1 A 0 A_Jump(25,"SpawnLightChestplate")
+			TNT1 A 0 A_Jump(128,"SpawnLightArmor")
+			TNT1 A 0 A_Jump(192,"SpawnLightVest")		
+			DiceTier2:
+			TNT1 A 0 A_Jump(64,"SpawnLightVest")
+			TNT1 A 0 A_Jump(84,"SpawnLightChestPlate")
+			TNT1 A 0 A_Jump(128,"SpawnLightArmor")
+			TNT1 A 0 A_Jump(84,"SpawnLightTechArmor")
+		DiceTier3:
+			TNT1 A 0 A_Jump(64,"SpawnLightVest")
+			TNT1 A 0 A_Jump(84,"SpawnLightChestPlate")
+			TNT1 A 0 A_Jump(128,"SpawnLightArmor")
+			TNT1 A 0 A_Jump(84,"SpawnLightTechArmor")
+		DiceTier4:
+			TNT1 A 0 A_Jump(0,"SpawnLightVest")
+			TNT1 A 0 A_Jump(0,"SpawnLightChestplate")
+			TNT1 A 0 A_Jump(64,"SpawnMediumArmor")
+			TNT1 A 0 A_Jump(128,"SpawnLightArmor")
+			TNT1 A 0 A_Jump(128,"SpawnLightTechArmor")
+	SpawnLightVest:
+		TNT1 A 0 A_SpawnItemEx("DropedCMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnLightChestplate:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMELightChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnLightArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMELightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+	SpawnLightTechArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMELightTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+	SpawnMediumArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEMediumArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("LightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+
+}
+ACTOR DropedCMELightVest
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
 }
 
-Actor HeavyArmorSpawn : RandomSpawner Replaces BlueArmor
+ACTOR DropedCMELightChestplate
 {
-dropitem "HeavyVest"
-dropitem "HeavyChestplate"
-dropitem "HeavyArmor2"
-dropitem "HeavyTechArmor"
-dropitem "DemonVest"
-dropitem "DemonTechArmor"
-dropitem "EliteArmor"
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMELightChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
 }
 
+ACTOR DropedCMELightArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMELightArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMELightTechArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMELightTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+
+ACTOR DropedCMEMediumArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEMediumArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMELightVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+Actor CMEHeavyArmorSpawner Replaces BlueArmor
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnHeavyVest", "SpawnHeavyChestplate", "SpawnHeavyArmor", "SpawnHeavyTechArmor", "SpawnDemonVest", "SpawnDemonTechVest", "SpawnEliteArmor")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(128,"SpawnHeavyVest")
+		TNT1 A 0 A_Jump(64,"SpawnHeavyChestplate")
+		TNT1 A 0 A_Jump(32,"SpawnHeavyArmor")
+		DiceTier2:
+		TNT1 A 0 A_Jump(32,"SpawnHeavyTechArmor")
+		TNT1 A 0 A_Jump(32,"SpawnHeavyArmor")
+		TNT1 A 0 A_Jump(64,"SpawnHeavyVest")
+		TNT1 A 0 A_Jump(42,"SpawnHeavyChestplate")
+		DiceTier3:
+		TNT1 A 0 A_Jump(64,"SpawnDemonVest")
+		TNT1 A 0 A_Jump(42,"SpawnDemonTechArmor")
+		TNT1 A 0 A_Jump(128,"SpawnHeavyTechArmor")
+		TNT1 A 0 A_Jump(32,"SpawnHeavyChestplate")
+		DiceTier4:
+		TNT1 A 0 A_Jump(16,"SpawnEliteArmor")
+		TNT1 A 0 A_Jump(32,"SpawnDemonTechArmor")
+		TNT1 A 0 A_Jump(64,"SpawnDemonVest")
+		TNT1 A 0 A_Jump(128,"SpawnHeavyTechArmor")
+	SpawnHeavyVest:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnHeavyChestplate:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHeavyChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnHeavyArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+	SpawnHeavyTechArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHeavyTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop 
+	SpawnDemonVest:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEDemonVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnDemonTechArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEDemonTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnEliteArmor:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEEliteArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("HeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	}
+
+}
+
+ACTOR DropedCMEHeavyVest
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+
+ACTOR DropedCMEHeavyChestplate
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHeavyChestplate",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEHeavyArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHeavyArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEHeavyTechArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHeavyTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEDemonVest
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEDemonVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEDemonTechArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEDemonTechArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEEliteArmor
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_ExecuteAlways(796, 0, 0, 0, 0)//Check if Vanilla Mode is activated
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEEliteArmor",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHeavyVest",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}

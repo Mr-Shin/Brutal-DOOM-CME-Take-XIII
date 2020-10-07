@@ -335,3 +335,13 @@ actor GiantSuperGore: SmallSuperGore
 Scale 4.0
 Speed 8
 }
+
+ACTOR GreenBloodSplasher2: BloodSplasher2
+{
+DamageType GreenBlood
+}
+
+ACTOR BlueBloodSplasher2: BloodSplasher2
+{
+DamageType BlueBlood
+}

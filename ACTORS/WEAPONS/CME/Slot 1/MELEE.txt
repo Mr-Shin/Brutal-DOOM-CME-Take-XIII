@@ -17,6 +17,7 @@ ACTOR CMEv20bMelee_Attacks : CMEWeapon Replaces Fist
     +WEAPON.NOAUTOAIM
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.CHEATNOTWEAPON
+	tag "Brutal DOOM v20 Fists"
 	States
 	{
 	Steady:
@@ -118,8 +119,8 @@ ACTOR CMEv20bMelee_Attacks : CMEWeapon Replaces Fist
 	TNT1 A 0 A_Takeinventory("FistsSelected",1)
     //TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"KillLS")
 	TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"FireBarrel")
-		TNT1 A 1
-		Wait
+	TNT1 A 1
+	Wait
 
     KillLS:
         THEA E 8
@@ -146,11 +147,10 @@ ACTOR CMEv20bMelee_Attacks : CMEWeapon Replaces Fist
 	TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
 	TNT1 A 0 A_Takeinventory("HasBarrel",1)
 	TNT1 A 0 A_TakeInventory("TossGrenade", 1)
-        ////////////////// Check if player is performing a fatality\\\\
-		TNT1 A 0
-		TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"ReadySoul")
-        ////////////////////
-		TNT1 A 0 A_Raise
+	TNT1 A 0
+	TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"ReadySoul")
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 AAAAAAAA 1 A_Raise
 		Wait
 	Fire:
         TNT1 A 0

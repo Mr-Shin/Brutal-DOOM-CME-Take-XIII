@@ -12,3 +12,34 @@ Actor BDWeaponACtion : Inventory
 {
 inventory.maxamount 1
 }
+Actor ChainsawHitGreen : Inventory
+{
+inventory.maxamount 1
+}
+Actor IsOverNukage : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor IsOverDirt : Inventory {inventory.maxamount 1}
+Actor IsOverGravel : Inventory {inventory.maxamount 1}
+Actor IsOverMetal : Inventory {inventory.maxamount 1}
+Actor IsOverMetal2 : Inventory {inventory.maxamount 1}
+Actor IsOverRock : Inventory {inventory.maxamount 1}
+Actor IsOverSnow : Inventory {inventory.maxamount 1}
+Actor IsOverWood : Inventory {inventory.maxamount 1}
+Actor IsOverTile : Inventory {inventory.maxamount 1}
+Actor IsOverTile2 : Inventory {inventory.maxamount 1}
+Actor IsOverSlimy : Inventory {inventory.maxamount 1}
+Actor AnimuGore : Inventory//bloodammount_666 easter egg
+{
+inventory.maxamount 1
+}
+Actor ChainsawHitRed : Inventory
+{
+inventory.maxamount 1
+}
+Actor ChainsawHitBlue : Inventory
+{
+inventory.maxamount 1
+}

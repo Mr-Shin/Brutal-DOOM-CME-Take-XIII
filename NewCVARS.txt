@@ -15,3 +15,294 @@ Script 5923 (VOID) NET
  SetActorProperty(0, APROP_HEIGHT, 58);
  SetActorProperty(0, APROP_SPEED, 1.0);
 }
+Script "CMESpawnControl" enter net
+{
+if (GetCvar("CME_v20bPClass") == 1) 
+	{ 
+	SetCvar("BrutalSpawnBalance", 0);
+	SetActorState(0,"ReplaceVanilla",true);
+	}
+}
+Script "ToggleItems" enter net
+{
+if (GetCvar("CME_NoCMELightChestplate") == 1) 
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMELightArmor2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMELightTechArmor") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMEMediumArmor") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEHeavyChestplate") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEHeavyArmor2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEHeavyTechArmor") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMEDemonVest") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMEDemonTechArmor") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMEEliteArmor") == 1)
+		{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEHealthPlus3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMESoulHealthBonus") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEHealthPlusBig") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEStrongHealthPlus") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMESuperHealthPlus") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEArmorBonus") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEHelmetArmorBonus") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEQuakeArmorShard") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMEBloodArmorShard") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEArmorShard3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMESuperArmorShard") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVar("CME_NoCMEClip1") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip12") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip22") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_No2CMEClip2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_No3CMEClip2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip1Box") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip1Box2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip2Box1") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip2Box2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip2Box3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEClip2Box4") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShell2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShell3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShell4") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShell5") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShellBox2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShellBox3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShellBox4") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEShellBox5") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketAmmo2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketBox2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketBox3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketBox4") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketBox5") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketBox6") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMERocketBox7") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEGrenadeBox") == 1)
+	{
+	SetActorState(0,"ReplaceToggle",true);
+	}
+	else if (GetCvar("CME_NoCMECell2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMECell3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMECellBox2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMECellBox3") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMECellBox4") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMELifeSphere2") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCVAR("CME_NoCMEUltrasphere") == 1)
+	{ 
+	SetActorState(0,"ReplaceToggle",true); 
+	}
+	else if (GetCvar("CME_NoCMEBackpack2") == 1)
+	{
+	SetActorState(0,"ReplaceToggle",true);
+	}
+	else if (GetCvar("CME_NoCMEBackpack3") == 1)
+	{
+	SetActorState(0,"ReplaceToggle",true);
+	}
+	else if (GetCvar("CME_NoCMEBackpack4") == 1)
+	{
+	SetActorState(0,"ReplaceToggle",true);
+	}
+}
+
+Script "BackPack2" (void)
+{
+	SetAmmoCapacity("CMEClip1",600);
+	SetAmmoCapacity("CMEClip2",800);
+	SetAmmoCapacity("CMEShell", 250);
+	SetAmmoCapacity("CMERocketAmmo",250);
+	SetAmmoCapacity("CMECell",900);
+	delay(2);
+	GiveInventory("CMEClip1Box",200);
+	GiveInventory("CMEClip2Box",200);
+	GiveInventory("CMEShellBox",20);
+	GiveInventory("CMERocketBox",20);
+	GiveInventory("CMECellBox",200);
+	
+}
+
+Script "BackPack3" (void)
+{
+	SetAmmoCapacity("CMEClip1",800);
+	SetAmmoCapacity("CMEClip2",1000);
+	SetAmmoCapacity("CMEShell", 500);
+	SetAmmoCapacity("CMERocketAmmo",500);
+	SetAmmoCapacity("CMECell",1200);
+	delay(2);
+	GiveInventory("CMEClip1Box",300);
+	GiveInventory("CMEClip2Box",300);
+	GiveInventory("CMEShellBox",30);
+	GiveInventory("CMERocketBox",30);
+	GiveInventory("CMECellBox",300);
+	
+}
+
+Script "BackPack4" (void)
+{
+	SetAmmoCapacity("CMEClip1",1000);
+	SetAmmoCapacity("CMEClip2",1200);
+	SetAmmoCapacity("CMEShell", 700);
+	SetAmmoCapacity("CMERocketAmmo",700);
+	SetAmmoCapacity("CMECell",1500);
+	delay(2);
+	GiveInventory("CMEClip1Box",400);
+	GiveInventory("CMEClip2Box",400);
+	GiveInventory("CMEShellBox",40);
+	GiveInventory("CMERocketBox",40);
+	GiveInventory("CMECellBox",400);
+	
+}

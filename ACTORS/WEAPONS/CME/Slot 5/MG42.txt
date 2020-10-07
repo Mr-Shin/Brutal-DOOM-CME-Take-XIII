@@ -19,10 +19,12 @@ ACTOR CMEv20bHitlersBuzzsaw : CMEWeapon
 		HBUS A 1 A_WeaponReady
 		Loop
 	Deselect:
-		HBUS A 1 A_Lower
+		TNT1 A 0
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		Loop
 	Select:
-		HBUS A 1 A_Raise
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 AAAAAAAA 1 A_Raise
 		Loop
 	Fire:
 		TNT1 A 0 BRIGHT A_FireBullets (1, 1, 1, 25, "ExtremeBulletPuff2")

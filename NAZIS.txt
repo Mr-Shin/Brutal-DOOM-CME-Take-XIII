@@ -261,8 +261,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	
 	Pain.Killme:
     TNT1 A 0
-	Goto Crouch
-		
+	Stop		
 		Pain.Melee:
 		Pain.Fatality:
 		TNT1 A 0 A_ChangeFlag(GHOST, 0)

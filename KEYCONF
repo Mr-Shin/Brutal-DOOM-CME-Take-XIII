@@ -1,7 +1,6 @@
 clearplayerclasses
 addplayerclass Doomer //nomenu
 
-
    addkeysection "BrutalDoom - Advanced Movements" BrutalDoomActions               // the last unquoted bit used to say MySampleKeysection
    
    addmenukey "Kick" kickem

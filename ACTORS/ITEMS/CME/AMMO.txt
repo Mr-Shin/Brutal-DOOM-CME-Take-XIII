@@ -7,10 +7,10 @@ ACTOR CMEClip1 : Ammo
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a Low Caliber Magazine."
 	Inventory.Amount 20
-	Inventory.MaxAmount 400
+	Inventory.MaxAmount 200
 	Ammo.BackpackAmount 20
 	inventory.pickupsound "clip1/pkup"
-	Ammo.BackpackMaxAmount 800
+	Ammo.BackpackMaxAmount 400
 	Inventory.Icon "CLIPD0"
 	States
 	{
@@ -35,47 +35,17 @@ Actor CMEClip12 : CMEClip1
 	}
 }
 
-ACTOR CMEClip1Box : CMEClip1
-{
-	Game Doom
-	SpawnID 139
-	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
-	Inventory.Amount 50
-	inventory.pickupsound "CBOX_2"
-	States
-	{
-	Spawn:
-		AMO3 A -1
-		Stop
-	}
-}
 
-ACTOR CMEClip1Box2 : CMEClip1
-{
-	Game Doom
-	SpawnID 139
-	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
-	Inventory.Amount 25
-	inventory.pickupsound "CBOX_2"
-	States
-	{
-	Spawn:
-		AMO3 B -1
-		Stop
-	}
-}
-
-//Rifle
-
+//CLip2 
 ACTOR CMEClip2 : Ammo 
 {
 	Game Doom
 	SpawnID 11
 	Inventory.PickupMessage "Picked up a High Caliber Magazine."
 	Inventory.Amount 20
-	Inventory.MaxAmount 500
+	Inventory.MaxAmount 300
 	Ammo.BackpackAmount 20
-	Ammo.BackpackMaxAmount 1000
+	Ammo.BackpackMaxAmount 600
 	Inventory.Icon "CLIPF0"
 	inventory.pickupsound "clip2/pkup"
 	States
@@ -131,6 +101,338 @@ ACTOR 3CMEClip2 : CMEClip2
 	}
 }
 
+//Spawn ------------------------------------------------------------------------
+
+Actor CMEClipSpawn  Replaces Clip
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEClip1", "SpawnCMEClip12", "SpawnCMEClip2", "SpawnCMEClip22", "Spawn2CMEClip2", "Spawn3CMEClip2")
+		Stop	
+		DiceProg:	
+		DiceTier1:
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip1")
+		TNT1 A 0 A_Jump(32,"SpawnCMEClip12")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip2")
+		TNT1 A 0 A_Jump(64,"Spawn2CMEClip2")
+		TNT1 A 0 A_Jump(64,"Spawn3CMEClip2")
+		TNT1 A 0 A_Jump(16,"SpawnCMEClip22")
+		DiceTier2:
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip1")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip12")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip2")
+		TNT1 A 0 A_Jump(64,"Spawn2CMEClip2")
+		TNT1 A 0 A_Jump(64,"Spawn3CMEClip2")
+		TNT1 A 0 A_Jump(32,"SpawnCMEClip22")
+		DiceTier3:
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip1")
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip12")
+		TNT1 A 0 A_Jump(200,"SpawnCMEClip2")
+		TNT1 A 0 A_Jump(128,"Spawn2CMEClip2")
+		TNT1 A 0 A_Jump(128,"Spawn3CMEClip2")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip22")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip1")
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip12")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip2")
+		TNT1 A 0 A_Jump(128,"Spawn2CMEClip2")
+		TNT1 A 0 A_Jump(128,"Spawn3CMEClip2")
+		TNT1 A 0 A_Jump(200,"SpawnCMEClip22")
+	SpawnCMEClip1:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip12:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip12",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip2:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip22:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip22",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	Spawn2CMEClip2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("Droped2CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	Spawn3CMEClip2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("Droped3CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("Clip",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+ACTOR DropedCMEClip1
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip12
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip12",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+
+    }
+}
+
+ACTOR DropedCMEClip22
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip22",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR Droped2CMEClip2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("2CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+
+ACTOR Droped3CMEClip2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("3CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+
+
+//Clip Box
+
+ACTOR CMEClip1Box : CMEClip1
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
+	Inventory.Amount 50
+	inventory.pickupsound "CBOX_2"
+	States
+	{
+	Spawn:
+		AMO3 A -1
+		Stop
+	}
+}
+
+ACTOR CMEClip1Box2 : CMEClip1
+{
+	Game Doom
+	SpawnID 139
+	Inventory.PickupMessage "Picked up a box of Low Caliber Ammunition."
+	Inventory.Amount 25
+	inventory.pickupsound "CBOX_2"
+	States
+	{
+	Spawn:
+		AMO3 B -1
+		Stop
+	}
+}
 
 
 ACTOR CMEClip2Box : CMEClip2 
@@ -214,6 +516,343 @@ ACTOR CMEClip2Box4 : CMEClip2
 }
 
 
+Actor CMEClipBoxSpawn  Replaces ClipBox
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEClip1Box", "SpawnCMEClip1Box2", "SpawnCMEClip2Box", "SpawnCMEClip2Box1", "SpawnCMEClip2Box2", "SpawnCMEClip2Box3", "SpawnCMEClip2Box4")
+		Stop	
+		DiceProg:	
+		DiceTier1:
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip1Box")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip1Box2")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip2Box4")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip2Box3")
+		DiceTier2:
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip1Box")
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip1Box2")
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip2Box4")
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip2BOx3")
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip2Box1")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip2Box")
+		DiceTier3:
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip1Box")
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip1Box2")
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip2Box")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip2Box3")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip2Box4")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip2Box1")
+		TNT1 A 0 A_Jump(64,"SpawnCMEClip2Box2")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip1Box")
+		TNT1 A 0 A_Jump(0,"SpawnCMEClip1Box2")
+		TNT1 A 0 A_Jump(128,"SpawnCMEClip2Box")
+		TNT1 A 0 A_Jump(200,"SpawnCMEClip2Box3")
+		TNT1 A 0 A_Jump(200,"SpawnCMEClip2Box4")
+		TNT1 A 0 A_Jump(200,"SpawnCMEClip2Box1")
+		TNT1 A 0 A_Jump(85,"SpawnCMEClip2Box2")
+	SpawnCMEClip1Box:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip1Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip1Box2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip1Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip2Box:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip2Box1:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip2Box1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip2Box2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip2Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip2Box3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip2Box3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEClip2Box4:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEClip2Box4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("ClipBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+ACTOR DropedCMEClip1Box
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip1Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip1Box2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip1Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip2Box
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+
+ACTOR DropedCMEClip2Box1
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box1",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip2Box2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip2Box3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEClip2Box4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEClip2Box4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEClip2Box",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
 //Shells
 ACTOR CMEShell : Ammo 
 {
@@ -222,9 +861,9 @@ ACTOR CMEShell : Ammo
 	+DONTGIB
 	Inventory.PickupMessage "Picked up 4 Shells."
 	Inventory.Amount 4
-	Inventory.MaxAmount 300
+	Inventory.MaxAmount 75
 	Ammo.BackpackAmount 4
-	Ammo.BackpackMaxAmount 600
+	Ammo.BackpackMaxAmount 150
 	Inventory.Icon "SHELC0"
 	States
 	{
@@ -291,6 +930,256 @@ ACTOR CMEShell5 : CMEShell
 } 
 
 
+Actor CMEShellSpawner  Replaces Shell
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEShell", "SpawnCMEShell2", "SpawnCMEShell3", "SpawnCMEShell4", "SpawnCMEShell5")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell2")
+		TNT1 A 0 A_Jump(200,"SpawnCMEShell3")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell2")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell3")
+		TNT1 A 0 A_Jump(85,"SpawnCMEShell4")
+		DiceTier3:
+		TNT1 A 0 A_Jump(200,"SpawnCMEShell")
+		TNT1 A 0 A_Jump(200,"SpawnCMEShell2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEShell3")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell4")
+		TNT1 A 0 A_Jump(85,"SpawnCMEShell5")
+		DiceTier4:
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEShell3")
+		TNT1 A 0 A_Jump(200,"SpawnCMEShell4")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShell5")
+	SpawnCMEShell:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEShell2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEShell3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEShell4:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShell4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	SpawnCMEShell5:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShell5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("Shell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+
+ACTOR DropedCMEShell
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+		
+    }
+}
+ACTOR DropedCMEShell2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEShell3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEShell4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEShell5
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShell5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+//ShellBox
 
 ACTOR CMEShellBox : CMEShell
 {
@@ -372,6 +1261,256 @@ ACTOR CMEShellBox5 : CMEShell
 	}
 }
 
+Actor CMEShellBoxSpawner  Replaces ShellBox
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEShellBox", "SpawnCMEShellBox2", "SpawnCMEShellBox3", "SpawnCMEShellBox4", "SpawnCMEShellBox5")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox2")
+		TNT1 A 0 A_Jump(200,"SpawnCMEShellBox3")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox2")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox3")
+		TNT1 A 0 A_Jump(85,"SpawnCMEShellBox4")
+		DiceTier3:
+		TNT1 A 0 A_Jump(200,"SpawnCMEShellBox")
+		TNT1 A 0 A_Jump(200,"SpawnCMEShellBox2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEShellBox3")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox4")
+		TNT1 A 0 A_Jump(85,"SpawnCMEShellBox5")
+		DiceTier4:
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEShellBox3")
+		TNT1 A 0 A_Jump(200,"SpawnCMEShellBox4")
+		TNT1 A 0 A_Jump(128,"SpawnCMEShellBox5")
+	SpawnCMEShellBox:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEShellBox2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShellBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEShellBox3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShellBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEShellBox4:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShellBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEShellBox5:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEShellBox5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("ShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+ACTOR DropedCMEShellBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+
+    }
+}
+
+ACTOR DropedCMEShellBox2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEShellBox3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEShellBox4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+
+ACTOR DropedCMEShellBox5
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEShellBox5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEShellBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
 //Rockets
 Actor CMERocketAmmo : Ammo 
 {
@@ -379,9 +1518,9 @@ Actor CMERocketAmmo : Ammo
 +dontgib
 Inventory.PickupMessage "Picked up a Rocket."
 Inventory.Amount 1
-Inventory.MaxAmount 300
+Inventory.MaxAmount 75
 Ammo.BackpackAmount 1
-Ammo.BackpackMaxAmount 600
+Ammo.BackpackMaxAmount 150
 	inventory.pickupsound "misc/rocket_pickup"
 	inventory.ICON "ROCKC0"
 
@@ -409,8 +1548,124 @@ Actor CMERocketAmmo2 : CMERocketAmmo
 
 }
 
+Actor CMERocketAmmoSpawner  Replaces RocketAmmo
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMERocketAmmo", "SpawnCMERocketAmmo2")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(256,"SpawnCMERocketAmmo")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketAmmo2")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketAmmo")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketAmmo2")
+		DiceTier3:
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketAmmo")
+		TNT1 A 0 A_Jump(200,"SpawnCMERocketAmmo")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketAmmo")
+		TNT1 A 0 A_Jump(256,"SpawnCMERocketAmmo2")
+	SpawnCMERocketAmmo:
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketAmmo2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketAmmo2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("RocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+ACTOR DropedCMERocketAmmo
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+    }
+}
 
 
+ACTOR DropedCMERocketAmmo2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketAmmo2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketAmmo",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+//Rocket Box
 Actor CMERocketBox : CMERocketAmmo 
 {
 Game DOOM
@@ -533,6 +1788,390 @@ States
 	
 }
 
+Actor CMERocketBoxSpawner  Replaces RocketBox
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMERocketBox", "SpawnCMERocketBox2", "SpawnCMERocketBox3", "SpawnCMERocketBox4", "SpawnCMERocketBox5", "SpawnCMERocketBox6", "SpawnCMERocketBox7", "SpawnCMEGrenadeBox")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(200,"SpawnCMERocketBox2")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox4")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox6")
+		TNT1 A 0 A_Jump(85,"SpawnCMERocketBox")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketBox7")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketBox3")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketBox5")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox2")
+		TNT1 A 0 A_Jump(200,"SpawnCMERocketBox4")
+		TNT1 A 0 A_Jump(200,"SpawnCMERocketBox6")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketBox7")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketBox3")
+		TNT1 A 0 A_Jump(0,"SpawnCMERocketBox5")
+		DiceTier3:
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketBox2")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox4")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox6")
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketBox")
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketBox7")
+		TNT1 A 0 A_Jump(32,"SpawnCMERocketBox3")
+		TNT1 A 0 A_Jump(32,"SpawnCMERocketBox5")
+		TNT1 A 0 A_Jump(32,"SpawnCMEGrenadeBox")
+		DiceTier4:
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketBox2")
+		TNT1 A 0 A_Jump(85,"SpawnCMERocketBox4")
+		TNT1 A 0 A_Jump(85,"SpawnCMERocketBox6")
+		TNT1 A 0 A_Jump(85,"SpawnCMERocketBox")
+		TNT1 A 0 A_Jump(128,"SpawnCMERocketBox7")
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketBox3")
+		TNT1 A 0 A_Jump(64,"SpawnCMERocketBox5")
+		TNT1 A 0 A_Jump(64,"SpawnCMEGrenadeBox")
+	SpawnCMERocketBox:
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketBox2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketBox3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketBox4:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketBox5:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketBox6:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox6",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMERocketBox7:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMERocketBox7",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEGrenadeBox:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEGrenadeBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("RocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+ACTOR DropedCMERocketBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+
+    }
+}
+
+ACTOR DropedCMERocketBox2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMERocketBox3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMERocketBox4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+ACTOR DropedCMERocketBox5
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox5",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+ACTOR DropedCMERocketBox6
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox6",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMERocketBox7
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMERocketBox7",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEGrenadeBox
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEGrenadeBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMERocketBox",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+
+
 
 //Cells
 Actor CMECell : Ammo 
@@ -541,9 +2180,9 @@ Actor CMECell : Ammo
 +dontgib
 Inventory.PickupMessage "Picked up a Cell."
 inventory.amount 20
-Inventory.maxamount 800
+Inventory.maxamount 350
 Ammo.BackpackAmount 20
-Ammo.backpackmaxamount 1600
+Ammo.backpackmaxamount 700
 Inventory.pickupsound "misc/cell_pickup"
 Inventory.Icon "CELLB0"
 
@@ -588,10 +2227,171 @@ Inventory.pickupsound "misc/cell_pickup"
 	
 }
 
+Actor CMECellSpawner  Replaces Cell
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMECell", "SpawnCMECell2", "SpawnCMECell3")
+		Stop	
+		DiceProg:	// Progressive spawn preset enforces strict spawning rules by excluding monsters until they are presented in later levels.
+		DiceTier1:
+		TNT1 A 0 A_Jump(200,"SpawnCMECell")
+		TNT1 A 0 A_Jump(128,"SpawnCMECell3")
+		TNT1 A 0 A_Jump(85,"SpawnCMECell2")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMECell")
+		TNT1 A 0 A_Jump(128,"SpawnCMECell3")
+		TNT1 A 0 A_Jump(128,"SpawnCMECell2")
+		DiceTier3:
+		TNT1 A 0 A_Jump(85,"SpawnCMECell")
+		TNT1 A 0 A_Jump(128,"SpawnCMECell3")
+		TNT1 A 0 A_Jump(200,"SpawnCMECell2")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMECell")
+		TNT1 A 0 A_Jump(85,"SpawnCMECell3")
+		TNT1 A 0 A_Jump(200,"SpawnCMECell2")
+	SpawnCMECell:
+		TNT1 A 0 A_SpawnItemEx("DropedCMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMECell2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMECell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMECell3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMECell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("Cell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
 
 
+ACTOR DropedCMECell
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+    }
+}
 
-Actor CMECellBox : CMECell
+ACTOR DropedCMECell2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECell2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMECell3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECell3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECell",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+//Cell Pack
+
+Actor CMECellPack : CMECell
 {
 Game DOOM
 SpawnID 143
@@ -609,7 +2409,7 @@ States
 }
 
 
-Actor CMECellBox2 : CMECell
+Actor CMECellPack2 : CMECell
 {
 Game DOOM
 SpawnID 143
@@ -626,7 +2426,7 @@ States
 	
 }
 
-Actor CMECellBox3 : CMECell
+Actor CMECellPack3 : CMECell
 {
 Game DOOM
 SpawnID 143
@@ -643,7 +2443,7 @@ States
 	
 }
 
-Actor CMECellBox4 : CMECell
+Actor CMECellPack4 : CMECell
 {
 Game DOOM
 SpawnID 143
@@ -660,8 +2460,214 @@ States
 	
 }
 
+Actor CMECellPackSpawner  Replaces CellPack
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMECellPack", "SpawnCMECellPack2", "SpawnCMECellPack3", "SpawnCMECellPack4")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(200,"SpawnCMECellPack")
+		TNT1 A 0 A_Jump(0,"SpawnCMECellPack2")
+		TNT1 A 0 A_Jump(0,"SpawnCMECellPack3")
+		TNT1 A 0 A_Jump(128,"SpawnCMECellPack4")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMECellPack")
+		TNT1 A 0 A_Jump(0,"SpawnCMECellPack2")
+		TNT1 A 0 A_Jump(64,"SpawnCMECellPack3")
+		TNT1 A 0 A_Jump(85,"SpawnCMECellPack4")
+		DiceTier3:
+		TNT1 A 0 A_Jump(64,"SpawnCMECellPack")
+		TNT1 A 0 A_Jump(85,"SpawnCMECellPack2")
+		TNT1 A 0 A_Jump(128,"SpawnCMECellPack3")
+		TNT1 A 0 A_Jump(0,"SpawnCMECellPack4")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMECellPack")
+		TNT1 A 0 A_Jump(200,"SpawnCMECellPack2")
+		TNT1 A 0 A_Jump(128,"SpawnCMECellPack3")
+		TNT1 A 0 A_Jump(0,"SpawnCMECellPack4")
+	SpawnCMECellPack:
+		TNT1 A 0 A_SpawnItemEx("DropedCMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMECellPack2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMECellPack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMECellPack3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMECellPack3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMECellPack4:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMECellPack4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("CellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+ACTOR DropedCMECellPack
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+    }
+}
+
+ACTOR DropedCMECellPack2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMECellPack3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMECellPack4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMECellPack4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMECellPack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
 
 
+//Monster ammo
 ACTOR CMEGas : Ammo
 {
    Inventory.Amount 500
@@ -682,6 +2688,7 @@ ACTOR CMEMiniHellRocketAmmo : Ammo
    Inventory.Icon "FATBD0"
 }
 
+//Grenades
 ACTOR CMEGrenadeAmmo : Ammo
 {
 	Game Doom
@@ -714,13 +2721,14 @@ ACTOR CMEGrenadeBox : CMEGrenadeAmmo
 		Stop
 	}
 }
-
-ACTOR CMEAmmoSuply : BackpackItem replaces Backpack
+//Backpack
+ACTOR CMEAmmoSupply : BackpackItem
 {
 	Game Doom
 	SpawnID 144
 	Height 26
-	Inventory.PickupMessage "$GOTBACKPACK"
+	Inventory.PickupSound "BACKPACK"
+	Inventory.PickupMessage "You Found the 1st Tier Backpack!"
 	States
 	{
 	Spawn:
@@ -730,9 +2738,275 @@ ACTOR CMEAmmoSuply : BackpackItem replaces Backpack
         TNT1 A 0 A_GiveInventory("CMEShellBox", 1)
 		TNT1 A 0 A_GiveInventory("CMEClip1Box", 1)
         TNT1 A 0 A_GiveInventory("CMEClip2Box", 1)
-        TNT1 A 0 A_GiveInventory("CMECellBox", 1)
+        TNT1 A 0 A_GiveInventory("CMECellPack", 1)
         TNT1 A 0 A_GiveInventory("CMERocketBox", 1)
         Stop
 	}
 }
-	
+
+ACTOR CMEAmmoSupply2 : CustomInventory
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	Inventory.PickupSound "BACKPACK"
+	Inventory.PickupMessage "You Found The 2nd Tier Backpack!"
+	States
+	{
+	Spawn:
+		BPAK B -1
+		Stop
+    Pickup:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BackPack2", 0, 0, 0, 0)
+        Stop
+	}
+}
+
+ACTOR CMEAmmoSupply3 : CustomInventory
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	Inventory.PickupSound "BACKPACK"
+	Inventory.PickupMessage "You Found The 3nd Tier Backpack!"
+	States
+	{
+	Spawn:
+		BPAK C -1
+		Stop
+    Pickup:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BackPack3", 0, 0, 0, 0)
+        Stop
+	}
+}
+
+ACTOR CMEAmmoSupply4 : CustomInventory
+{
+	Game Doom
+	SpawnID 144
+	Height 26
+	+COUNTITEM
+	+DONTGIB
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupSound "BACKPACK"
+	Inventory.PickupMessage "You Found The 4th Tier Backpack!"
+	States
+	{
+	Spawn:
+		CMPK ABCDEFG 1 
+		Loop
+    Pickup:
+		TNT1 A 0
+		TNT1 A 0 ACS_NamedExecuteAlways("BackPack4", 0, 0, 0, 0)
+        Stop
+	}
+}
+
+
+Actor CMEBackpackSpawner  Replaces Backpack
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEAmmoSupply", "SpawnCMEAmmoSupply2", "SpawnCMEAmmoSupply3", "SpawnCMEAmmoSupply4")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(256,"SpawnCMEAmmoSupply")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSUpply3")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply4")
+		DiceTier2:
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply")
+		TNT1 A 0 A_Jump(256,"SpawnCMEAmmoSupply2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSUpply3")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply4")
+		DiceTier3:
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply2")
+		TNT1 A 0 A_Jump(256,"SpawnCMEAmmoSUpply3")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply4")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSupply2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEAmmoSUpply3")
+		TNT1 A 0 A_Jump(256,"SpawnCMEAmmoSupply4")
+	SpawnCMEAmmoSupply:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEAmmoSupply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEAmmoSupply2:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEAmmoSupply2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEAmmoSupply3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEAmmoSupply3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEAmmoSupply4:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEAmmoSupply4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("Backpack",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+}
+
+ACTOR DropedCMEAmmoSupply
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+    }
+}
+
+ACTOR DropedCMEAmmoSupply2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEAmmoSupply3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}
+
+ACTOR DropedCMEAmmoSupply4
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply4",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+			
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEAmmoSupply",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+    }
+}

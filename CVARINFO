@@ -9,7 +9,6 @@ server int zdoombrutalblood	= 2;
 server int zdoombrutaljanitor = 0;
 
 
-
 server int isrunningzandronum = 1;
 
 
@@ -24,3 +23,81 @@ server int zdoombd_shotgunstrap = 0;
 server int bd_isnazilevel = 0;
 
 server int bd_disabledecorations = 0;
+server int BrutalSpawnBalance=0;
+
+//Item Disable
+//Light Armor
+server int CME_NoCMELightChestplate=0;
+server int CME_NoCMELightArmor2=0;
+server int CME_NoCMELightTechArmor=0;
+server int CME_NoCMEMediumArmor=0;
+//Heavy Armor
+server int CME_NoCMEHeavyChestplate=0;
+server int CME_NoCMEHeavyArmor2=0;
+server int CME_NoCMEHeavyTechArmor=0;
+server int CME_NoCMEDemonVest=0;
+server int CME_NoCMEDemonTechArmor=0;
+server int CME_NoCMEEliteArmor=0;
+//Health Bonus
+server int CME_NoCMEHealthPlus3=0;
+server int CME_NoCMESoulHealthBonus=0;
+server int CME_NoCMEHealthPlusBig=0;
+server int CME_NoCMEStrongHealthPlus=0;
+server int CME_NoCMESuperHealthPlus=0;
+//Armor Bonus
+server int CME_NoCMEArmorPlus=0;
+server int CME_NoCMEHelmetArmorBonus=0;
+server int CME_NoCMEQuakeArmorShard=0;
+server int CME_NoCMEBloodArmorShard=0;
+server int CME_NoCMEArmorShard3=0;
+server int CME_NoCMESuperArmorShard=0;
+//Clip
+server int CME_NoCMEClip1=0;
+server int CME_NoCMEClip12=0;
+server int CME_NoCMEClip22=0;
+server int CME_No2CMEClip2=0;
+server int CME_No3CMEClip2=0;
+//Clip Box
+server int CME_NoCMEClip1Box=0;
+server int CME_NoCMEClip1Box2=0;
+server int CME_NoCMEClip2Box1=0;
+server int CME_NoCMEClip2Box2=0;
+server int CME_NoCMEClip2Box3=0;
+server int CME_NoCMEClip2Box4=0;
+//Shell
+server int CME_NoCMEShell2=0;
+server int CME_NoCMEShell3=0;
+server int CME_NoCMEShell4=0;
+server int CME_NoCMEShell5=0;
+//Shell Box
+server int CME_NoCMEShellBox2=0;
+server int CME_NoCMEShellBox3=0;
+server int CME_NoCMEShellBox4=0;
+server int CME_NoCMEShellBox5=0;
+//Rocket
+server int CME_NoCMERocketAmmo2=0;
+//Rocket Box
+server int CME_NoCMERocketBox2=0;
+server int CME_NoCMERocketBox3=0;
+server int CME_NoCMERocketBox4=0;
+server int CME_NoCMERocketBox5=0;
+server int CME_NoCMERocketBox6=0;
+server int CME_NoCMERocketBox7=0;
+server int CME_NoCMEGrenadeBox=0;
+//Cell
+server int CME_NoCMECell2=0;
+server int CME_NoCMECell3=0;
+//Cell Box
+server int CME_NoCMECellBox2=0;
+server int CME_NoCMECellBox3=0;
+server int CME_NoCMECellBox4=0;
+//SoulSphere
+server int CME_NoCMELifeSphere2=0;
+//Megasphere
+server int CME_NoCMEUltrasphere=0;
+//Backpack
+server int CME_NoCMEBackpack2=0;
+server int CME_NoCMEBackpack3=0;
+server int CME_NoCMEBackpack4=0;
+//Class Settings
+server int CME_v20bPClass=0;

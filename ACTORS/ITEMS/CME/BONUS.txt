@@ -1,18 +1,5 @@
-
-ACTOR HealthBonusSpawn : RandomSpawner Replaces HealthBonus
-{
-dropitem "HealthPlus2"
-dropitem "HealthPlus3"
-dropitem "SoulHealthBonus"
-dropitem "HealthPlusBig"
-dropitem "StrongHealthPlus"
-dropitem "SuperHealthPlus"
-}
-
-
-
-//Health
-ACTOR HealthPlus2 : Health
+//Health Bonus
+ACTOR CMEHealthPlus2 : Health
 {
 	Game Doom
 	SpawnID 152
@@ -34,7 +21,7 @@ ACTOR HealthPlus2 : Health
 	}
 }
 
-ACTOR HealthPlus3 : Health
+ACTOR CMEHealthPlus3 : Health
 {
 	Game Doom
 	SpawnID 152
@@ -56,7 +43,7 @@ ACTOR HealthPlus3 : Health
 	}
 }
 
-ACTOR SoulHealthBonus : Health
+ACTOR CMESoulHealthBonus : Health
 {
 	Game Doom
 	SpawnID 152
@@ -78,7 +65,7 @@ ACTOR SoulHealthBonus : Health
 	}
 }
 
-ACTOR HealthPlusBig : Health
+ACTOR CMEHealthPlusBig : Health
 {
 	Game Doom
 	SpawnID 152
@@ -100,7 +87,7 @@ ACTOR HealthPlusBig : Health
 	}
 }
 
-ACTOR StrongHealthPlus : Health
+ACTOR CMEStrongHealthPlus : Health
 {
 	Game Doom
 	SpawnID 152
@@ -120,7 +107,7 @@ ACTOR StrongHealthPlus : Health
 	}
 }
 
-ACTOR SuperHealthPlus : Health
+ACTOR CMESuperHealthPlus : Health
 {
 	Game Doom
 	SpawnID 152
@@ -140,23 +127,311 @@ ACTOR SuperHealthPlus : Health
 	}
 }
 
-
-
-
-//Armor
-ACTOR ArmorBonusSpawn : RandomSpawner Replaces ArmorBonus
+Actor CMEHealthBonusSpawner  Replaces HealthBonus
 {
-dropitem "ArmorShard2"
-dropitem "ArmorPlus"
-dropitem "HelmetArmorBonus"
-dropitem "QuakeArmorShard"
-dropitem "BloodArmorShard"
-dropitem "BloodArmorShard"
-dropitem "ArmorShard3"
-dropitem "SuperArmorShard"
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEHealthPlus2", "SpawnCMEHealthPlus3", "SpawnCMESoulHealthBonus", "SpawnCMEHealthPlusBig", "SPawnCMEStrongHealthPlus", "SpawnCMESuperHealthPlus")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(200,"SpawnCMEHealthPlus2")
+		TNT1 A 0 A_Jump(200,"SpawnCMEHealthPlus3")
+		TNT1 A 0 A_Jump(128,"SpawnCMESoulHealthBonus")
+		TNT1 A 0 A_Jump(0,"SpawnCMEHealthPlusBig")
+		TNT1 A 0 A_Jump(0,"SpawnCMEStrongHealthPlus")
+		TNT1 A 0 A_Jump(0,"SpawnCMESuperHealthPlus")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMEHealthPlus2")
+		TNT1 A 0 A_Jump(128,"SpawnCMEHealthPlus3")
+		TNT1 A 0 A_Jump(128,"SpawnCMESoulHealthBonus")
+		TNT1 A 0 A_Jump(64,"SpawnCMEHealthPlusBig")
+		TNT1 A 0 A_Jump(0,"SpawnCMEStrongHealthPlus")
+		TNT1 A 0 A_Jump(0,"SpawnCMESuperHealthPlus")
+		DiceTier3:
+		TNT1 A 0 A_Jump(0,"SpawnCMEHealthPlus2")
+		TNT1 A 0 A_Jump(128,"SpawnCMEHealthPlus3")
+		TNT1 A 0 A_Jump(200,"SpawnCMESoulHealthBonus")
+		TNT1 A 0 A_Jump(64,"SpawnCMEHealthPlusBig")
+		TNT1 A 0 A_Jump(64,"SpawnCMEStrongHealthPlus")
+		TNT1 A 0 A_Jump(32,"SpawnCMESuperHealthPlus")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMEHealthPlus2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEHealthPlus3")
+		TNT1 A 0 A_Jump(0,"SpawnCMESoulHealthBonus")
+		TNT1 A 0 A_Jump(200,"SpawnCMEHealthPlusBig")
+		TNT1 A 0 A_Jump(128,"SpawnCMEStrongHealthPlus")
+		TNT1 A 0 A_Jump(64,"SpawnCMESuperHealthPlus")
+	SpawnCMEHealthPlus2:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEHealthPlus3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHealthPlus3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMESoulHealthBonus:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMESoulHealthBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEHealthPlusBig:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHealthPlusBig",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEStrongHealthPlus:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEStrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMESuperHealthPlus:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMESuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("HealthBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+
 }
 
-Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
+ACTOR DropedCMEHealthPlus2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+	
+    }
+}
+
+ACTOR DropedCMEHealthPlus3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHealthPlus3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMESoulHealthBonus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMESoulHealthBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+
+ACTOR DropedCMEHealthPlusBig
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHealthPlusBig",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEStrongHealthPlus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEStrongHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMESuperHealthPlus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+	    TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMESuperHealthPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEHealthPlus2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+//Armor Bonus
+Actor CMEArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -182,7 +457,7 @@ Actor ArmorShard2 : BasicArmorBonus// Replaces ArmorBonus
 	}
 }
 
-Actor ArmorPlus : BasicArmorBonus// Replaces ArmorBonus
+Actor CMEArmorPlus : BasicArmorBonus// Replaces ArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -209,7 +484,7 @@ Actor ArmorPlus : BasicArmorBonus// Replaces ArmorBonus
 }
 
 
-Actor HelmetArmorBonus : BasicArmorBonus// Replaces ArmorBonus
+Actor CMEHelmetArmorBonus : BasicArmorBonus// Replaces ArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -235,7 +510,7 @@ Actor HelmetArmorBonus : BasicArmorBonus// Replaces ArmorBonus
 	}
 }
 
-Actor QuakeArmorShard : BasicArmorBonus// Replaces ArmorBonus
+Actor CMEQuakeArmorShard : BasicArmorBonus// Replaces ArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -262,7 +537,7 @@ Actor QuakeArmorShard : BasicArmorBonus// Replaces ArmorBonus
 	}
 }
 
-Actor BloodArmorShard : BasicArmorBonus// Replaces ArmorBonus
+Actor CMEBloodArmorShard : BasicArmorBonus// Replaces ArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -288,7 +563,7 @@ Actor BloodArmorShard : BasicArmorBonus// Replaces ArmorBonus
 	}
 }
 
-Actor ArmorShard3 : BasicArmorBonus// Replaces ArmorBonus
+Actor CMEArmorShard3 : BasicArmorBonus// Replaces ArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -314,7 +589,7 @@ Actor ArmorShard3 : BasicArmorBonus// Replaces ArmorBonus
 	}
 }
 
-Actor SuperArmorShard : BasicArmorBonus
+Actor CMESuperArmorShard : BasicArmorBonus
 {
 	Game Doom
 	SpawnID 22
@@ -340,4 +615,354 @@ Actor SuperArmorShard : BasicArmorBonus
 		BON6 A 2
 		Goto Spawn
 	}
+}
+
+Actor CMEArmorBonusSpawner  Replaces ArmorBonus
+{
+	+LOOKALLAROUND
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		//TNT1 A 1 ACS_NamedExecuteAlways("StarterPackDynamicProgressionFix",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("SpawnerScript",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("CMESpawnControl",0)
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+	Deciding:
+		TNT1 A 1
+		loop
+		DiceRandom:
+		TNT1 A 0 A_Jump(256, "SpawnCMEArmorShard2", "SpawnCMEArmorPlus", "SpawnCMEHelmetArmorBonus", "SpawnCMEQuakeArmorShard", "SpawnCMEBloodArmorShard", "SpawnCMEArmorShard3", "SpawnCMESuperArmorShard")
+		Stop	
+		DiceProg:
+		DiceTier1:
+		TNT1 A 0 A_Jump(200,"SpawnCMEArmorShard2")
+		TNT1 A 0 A_Jump(200,"SpawnCMEArmorPlus")
+		TNT1 A 0 A_Jump(128,"SpawnCMEHelmetArmorBonus")
+		TNT1 A 0 A_Jump(64,"SpawnCMEQuakeArmorShard")
+		TNT1 A 0 A_Jump(0,"SpawnCMEBloodArmorShard")
+		TNT1 A 0 A_Jump(0,"SpawnCMEArmorShard3")
+		TNT1 A 0 A_Jump(0,"SpawnCMESuperArmorShard")
+		DiceTier2:
+		TNT1 A 0 A_Jump(128,"SpawnCMEArmorShard2")
+		TNT1 A 0 A_Jump(128,"SpawnCMEArmorPlus")
+		TNT1 A 0 A_Jump(64,"SpawnCMEHelmetArmorBonus")
+		TNT1 A 0 A_Jump(32,"SpawnCMEQuakeArmorShard")
+		TNT1 A 0 A_Jump(64,"SpawnCMEBloodArmorShard")
+		TNT1 A 0 A_Jump(0,"SpawnCMEArmorShard3")
+		TNT1 A 0 A_Jump(0,"SpawnCMESuperArmorShard")
+		DiceTier3:
+		TNT1 A 0 A_Jump(64,"SpawnCMEArmorShard2")
+		TNT1 A 0 A_Jump(64,"SpawnCMEArmorPlus")
+		TNT1 A 0 A_Jump(32,"SpawnCMEHelmetArmorBonus")
+		TNT1 A 0 A_Jump(128,"SpawnCMEQuakeArmorShard")
+		TNT1 A 0 A_Jump(128,"SpawnCMEBloodArmorShard")
+		TNT1 A 0 A_Jump(64,"SpawnCMEArmorShard3")
+		TNT1 A 0 A_Jump(64,"SpawnCMESuperArmorShard")
+		DiceTier4:
+		TNT1 A 0 A_Jump(0,"SpawnCMEArmorShard2")
+		TNT1 A 0 A_Jump(0,"SpawnCMEArmorPlus")
+		TNT1 A 0 A_Jump(0,"SpawnCMEHelmetArmorBonus")
+		TNT1 A 0 A_Jump(64,"SpawnCMEQuakeArmorShard")
+		TNT1 A 0 A_Jump(200,"SpawnCMEBloodArmorShard")
+		TNT1 A 0 A_Jump(200,"SpawnCMEArmorShard3")
+		TNT1 A 0 A_Jump(128,"SpawnCMESuperArmorShard")
+	SpawnCMEArmorShard2:
+		TNT1 A 0 A_SpawnItemEx("DropedCMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEArmorPlus:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEArmorPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEHelmetArmorBonus:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEHelmetArmorBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEQuakeArmorShard:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEQuakeArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEBLoodArmorShard:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEBloodArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMEArmorShard3:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMEArmorShard3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	SpawnCMESuperArmorShard:
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 A 0 A_SpawnItemEx("DropedCMESuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	ReplaceVanilla:
+		TNT1 A 0 A_SpawnItemEx("ArmorBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS | 288)
+		Stop
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+		
+	}
+
+}
+
+ACTOR DropedCMEArmorShard2
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	
+    }
+}
+
+ACTOR DropedCMEArmorPlus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEArmorPlus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEHelmetArmorBonus
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEHelmetArmorBonus",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+
+ACTOR DropedCMEQuakeArmorShard
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEQuakeArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEBloodArmorShard
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEBloodArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMEArmorShard3
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMEArmorShard3",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
+}
+
+ACTOR DropedCMESuperArmorShard
+{
+    Radius 8
+    Height 10
+    Scale 1.0
+	Speed 1
+	Mass 1
+    gravity 1
+	Decal none
+    +MOVEWITHSECTOR
+    +DONTGIB
+    +NOBLOCKMAP
+    +NOTELEPORT
+    +MISSILE
+    States
+    {
+    Spawn://SPAWN_A_FUCKING_CHAINGUN
+		//TNT1 A 1 NoDelay A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+		Goto Death
+		
+	Death:
+		//TNT1 A 0 A_JumpIf(ACS_NamedExecuteWithResult("CheckTraditional")==1,"ReplaceTraditional")
+		TNT1 A 1 ACS_NamedExecuteAlways("ToggleItems",0)
+		TNT1 AA 1
+		TNT1 AA 1
+        TNT1 A 0 A_SpawnItemEx("CMESuperArmorShard",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+        Stop
+		
+	ReplaceToggle:
+		TNT1 A 0 A_SpawnItemEx("CMEArmorShard2",0,0,0,0,0,0,0,SXF_TRANSFERSPECIAL | SXF_NOCHECKPOSITION | 288)
+		Stop
+	
+    }
 }

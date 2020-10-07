@@ -43,6 +43,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 		SHTI IJK 2 A_WeaponReady
 		TNT1 A 0 A_TakeInventory("ImpactMovesSling")
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -51,6 +52,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 		ShakeRight:
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("ImpactMovesSling")
@@ -64,6 +66,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeLeft")
 		SHTI DEF 2 A_WeaponReady
 	    TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -72,6 +75,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeLeft")
 	    SHTI GHK 2 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
@@ -80,6 +84,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 	    SHTI ABEF 2 A_WeaponReady
 		Goto Ready+14
 		
@@ -97,6 +102,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 		ST81 DEFED 2 A_WeaponReady
 	    TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -104,6 +110,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 	    ST81 AB 2 A_WeaponReady
 		TNT1 A 0 A_JumpIfInventory("Kicking",1,"DoKick")
         TNT1 A 0 A_JumpIfInventory("Taunting",1,"Taunt")
@@ -111,6 +118,7 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute1", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 	    ST81 DE 2 A_WeaponReady
 		Goto Ready2
 		
@@ -150,23 +158,21 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 		TNT1 A 0 A_JumpIfInventory("TossGrenade",1,"TossGrenade")
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeAiming")
-								TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
-
+		TNT1 A 0 A_JumpIfInventory("DoPunch",1,"QuickPunch")
 		TNT1 A 0 A_JumpIfInventory("Unloading",1,"Unload")
 		SHT8 A 1 A_WeaponReady
 		Loop
 	
 	
 	Deselect:
-			TNT1 A 0
-			TNT1 A 0 A_Takeinventory("Zoomed",1)
-			TNT1 A 0 A_TakeInventory("TossGrenade", 1)
-			TNT1 A 0 A_Takeinventory("ADSmode",1)
+		SHSS DCBA 1
+		TNT1 A 0
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 0 A_Takeinventory("Zoomed",1)
+		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
+		TNT1 A 0 A_Takeinventory("ADSmode",1)
 		TNT1 A 0 A_Takeinventory("UseShotgunStrap",1)
         TNT1 A 0 A_ZoomFactor(1.0)
-		SHSS DCBA 1
-		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
-		TNT1 A 1
 		Wait
 	
 	Select:
@@ -187,7 +193,8 @@ ACTOR CMEv20bShotGun : CMEWeapon Replaces Shotgun
 		TNT1 A 0 A_Takeinventory("FlameCannonSelected",1)
 		TNT1 A 0 A_Takeinventory("HasBarrel",1)
 		TNT1 A 0 A_TakeInventory("TossGrenade", 1)
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Raise
+		TNT1 AAAAAAAA 1 A_Raise
 		Goto Ready
 		
     Fire:

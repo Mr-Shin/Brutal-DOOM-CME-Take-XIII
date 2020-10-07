@@ -1,0 +1,40 @@
+#library "spawnscript"
+#include "zcommon.acs"
+
+Script "SpawnerScript" (int LevelNumber)
+{
+	LevelNumber = GetLevelInfo(LEVELINFO_CLUSTERNUM);
+	if(GetCvar("BrutalSpawnBalance")==1)
+    {
+		If 	   (LevelNumber == 1 || LevelNumber == 5)
+		{
+			SetActorState(0,"DiceTier1",true);
+		}
+		else if (LevelNumber == 2 || LevelNumber == 6)
+		{
+			SetActorState(0,"DiceTier2",true);
+		}
+		else if (LevelNumber == 3 || LevelNumber == 7)
+		{
+			SetActorState(0,"DiceTier3",true);
+		}
+		else if (LevelNumber == 4 || LevelNumber >= 8)
+		{
+			SetActorState(0,"DiceTier4",true);
+		}
+		else
+		{
+			SetActorState(0,"DiceTier2",true);
+		}
+    }
+	else if(GetCvar("Brutalspawnbalance")==2)
+    {
+        SetActorState(0,"DiceRandom",true); 
+    }
+	else if(GetCvar("BrutalSpawnBalance")==0)
+	{
+		SetActorState(0,"ReplaceClassed",true);
+	}
+}
+
+

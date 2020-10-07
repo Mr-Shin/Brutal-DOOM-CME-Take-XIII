@@ -1359,27 +1359,27 @@ frame CAND { light SMALLREDTORCH }
 }
 
 //New
-object HealthPlus2
+object CMEHealthPlus2
 {
     frame BON3 { light BLUEITEM }
 }
 
-object StrongHealthPlus
+object CMEStrongHealthPlus
 {
     frame BON3 { light CYANITEM  }
 }
 
-object SuperHealthPlus
+object CMESuperHealthPlus
 {
     frame BON3 { light REDITEM  }
 }
 
-object ArmorShard2
+object CMEArmorShard2
 {
     frame BON4 { light GREENITEM  }
 }
 
-object SuperArmorShard
+object CMESuperArmorShard
 {
     frame BON6 { light GREENITEM  }
 }

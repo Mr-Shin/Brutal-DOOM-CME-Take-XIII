@@ -47,6 +47,15 @@ OptionMenu "BrutalOptions"
   StaticText "Makes gibs disappear after 30 seconds."
   StaticText " "
   
+  Submenu "Disable Options", "DisableItems"
+  StaticText "Determine what items you want disable."
+  StaticText "  "
+  
+  Submenu "Spawn Preset Options", "CMESpawnMenu"
+  StaticText "Set your spawns."
+  StaticText " "
+
+
   Option "Enable Shotgun Strap Physics", "zdoombd_shotgunstrap", "YesOrNo"
   StaticText " "
   
@@ -72,6 +81,266 @@ OptionMenu "BrutalOptions"
   Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesOrNo"
   StaticText " "
 }
+OptionMenu "CMESpawnMenu"
+{
+Title "SPAWN OPTIONS"
+StaticText "What Gamemode do you want to play?"
+Submenu "Brutal DOOM", "BDSpawns"
+Submenu "CME", "CMESpawns"
+}
+OptionMenu "BDSpawns"
+{
+Title "Brutal DOOM Classes"
+Option "Brutal DOOM v20b Purist", "CME_v20bPClass", "YesOrNo"
+StaticText " "
+}
+OptionMenu "CMESpawns"
+{
+Title "Combined Mods Edition"
+Option "CME Spawns", "BrutalSpawnBalance", "BrutalDoomSpawnBalanceChoices"
+StaticText " "
+}
+OptionMenu "DisableItems"
+{
+Title "Disable Items Menu"
+StaticText " "
+Submenu "Armor", "ArmorItems"
+StaticText " "
+
+SubMenu "Ammo", "AmmoItems"
+StaticText " "
+
+Submenu "Armor Bonus", "ArmorBonusItems"
+StaticText " "
+
+submenu "Health Bonus", "HealthBonusItems" 
+StaticText " "
+
+submenu "Other Items", "OtherItemMenu"
+StaticText " " 
+
+StaticText "Select catagory"
+}
+OptionMenu "ArmorItems"
+{
+Title "Armor Menu"
+StaticText "---------------Light Armor Variants---------------"
+StaticText " "
+Option "Disable Light Chestplate", "CME_NoCMELightChestplate", "YesOrNo"
+StaticText " "
+
+Option "Disable Light Armor", "CME_NoCMELightArmor2", "YesOrNo"
+StaticText " "
+
+Option "Disable Light Tech Armor", "CME_NoCMELightTechArmor", "YesOrNo"
+StaticText " "
+
+Option "Disable Medium Armor", "CME_NoCMEMediumArmor", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Heavy Armor Variants---------------"
+StaticText " "
+Option "Disable Heavy Chestplate", "CME_NoCMEHeavyChestplate", "YesOrNo"
+StaticText " "
+
+Option "Disable Heavy Armor", "CME_NoCMEHeavyArmor2", "YesOrNo"
+StaticText " "
+
+Option "Disable Heavy Tech Armor", "CME_NoCMEHeavyTechArmor", "YesOrNo"
+StaticText " "
+
+Option "Disable Demonic Vest", "CME_NoCMEDemonVest", "YesOrNo"
+StaticText " "
+
+Option "Disable Demon Tech Armor", "CME_NoCMEDemonTechArmor", "YesOrNo"
+StaticText " "
+
+Option "Disable Elite Tech Armor", "CME_NoCMEEliteArmor", "YesOrNo"
+StaticText " "
+}
+OptionMenu "AmmoItems"
+{
+Title "Ammo Menu"
+StaticText "---------------Clip Varients---------------"
+StaticText " "
+Option "Disable Pistol Clip 1", "CME_NoCMEClip1", "YesOrNo"
+StaticText " "
+
+Option "Disable Pistol Clip 2", "CME_NoCMEClip12", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip 2", "CME_NoCMEClip22", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip 3", "CME_No2CMEClip2", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip 4", "CME_No3CMEClip2", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Clip Box Varients---------------"
+StaticText " "
+Option "Disable Pistol Clip Box", "CME_NoCMEClip1Box", "YesOrNo"
+StaticText " "
+
+Option "Disable Pistol Clip Box 2", "CME_NoCMEClip1Box2", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip Box 2", "CME_NoCMEClip2Box1", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip Box 3", "CME_NoCMEClip2Box2", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip Box 4", "CME_NoCMEClip2Box3", "YesOrNo"
+StaticText " "
+
+Option "Disable Rifle Clip Box 5", "CME_NoCMEClip2Box4", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Shell Varients---------------"
+StaticText " "
+Option "Disable Shell Varient 2", "CME_NoCMEShell2", "YesOrNo"
+StaticText " " 
+
+Option "Disable Shell Varient 3", "CME_NoCMEShell3", "YesOrNo"
+StaticText " "
+
+Option "Disable Shell Varient 4", "CME_NoCMEShell4", "YesOrNo"
+StaticText " "
+
+Option "Disable Shell Varient 5", "CME_NoCMEShell5", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Shell Box Varients---------------"
+StaticText " "
+Option "Disable Shell Box Varient 2", "CME_NoCMEShellBox2", "YesOrNo"
+StaticText " "
+
+Option "Disable Shell Box Varient 3", "CME_NoCMEShellBox3", "YesOrNo"
+StaticText " "
+
+Option "Disable Shell Box Varient 4", "CME_NoCMEShellBox4", "YesOrNo"
+StaticText " "
+
+Option "Disable Shell Box Varient 5", "CME_NoCMEShellBox5", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Rocket Varients---------------"
+StaticText " "
+Option "Disable Rocket Ammo Varient 2", "CME_NoCMERocketAmmo2", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Rocket Box Varients---------------"
+StaticText " "
+Option "Disable Rocket Box Varient 2", "CME_NoCMERocketBox2", "YesOrNo"
+StaticText " "
+
+Option "Disable Rocket Box Varient 3", "CME_NoCMERocketBox3", "YesOrNo"
+StaticText " "
+
+Option "Disable Rocket Box Varient 4", "CME_NoCMERocketBox4", "YesOrNo"
+StaticText " "
+
+Option "Disable Rocket Box Varient 5", "CME_NoCMERocketBox5", "YesOrNo"
+StaticText " "
+
+Option "Disable Rocket Box Varient 6", "CME_NoCMERocketBox6", "YesOrNo"
+StaticText " "
+
+Option "Disable Rocket Box Varient 7", "CME_NoCMERocketBox7", "YesOrNo"
+StaticText " "
+
+Option "Disable Grenade Box", "CME_NoCMEGrenadeBox", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Cell Varients---------------"
+StaticText " "
+Option "Disable Cell Varient 2", "CME_NoCMECell2", "YesOrNo"
+StaticText " "
+
+Option "Disable Cell Varient 3", "CME_NoCMECell3", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Cell Box Varients---------------"
+StaticText " "
+Option "Disable Cell Box Varient 2", "CME_NoCMECellBox2", "YesOrNo"
+StaticText " "
+
+Option "Disable Cell Box Varient 3", "CME_NoCMECellBox3", "YesOrNo"
+StaticText " "
+
+Option "Disable Cell Box Varient 4", "CME_NoCMECellBox4", "YesOrNo"
+StaticText " "
+}
+OptionMenu "ArmorBonusItems"
+{
+Title "Armor Bonus Items"
+StaticText "---------------Armor Bonus Varients---------------"
+StaticText " "
+Option "Disable Armor Bonus Varient 2", "CME_NoCMEArmorPlus", "YesOrNo"
+StaticText " "
+
+Option "Disable Armor Bonus Varient 3", "CME_NoCMEHelmetArmorBonus", "YesOrNo"
+StaticText " "
+
+Option "Disable Armor Bonus Varient 4", "CME_NoCMEQuakeArmorShard", "YesOrNo"
+StaticText " "
+
+Option "Disable Armor Bonus Varient 5", "CME_NoCMEBloodArmorShard", "YesOrNo"
+StaticText " "
+
+Option "Disable Armor Bonus Varient 6", "CME_NoCMEArmorShard3", "YesOrNo"
+StaticText " "
+
+Option "Disable Armor Bonus Varient 7", "CME_NoCMESuperArmorShard", "YesOrNo"
+StaticText " "
+}
+OptionMenu "HealthBonusItems"
+{
+Title "Health Bonus Items"
+StaticText "---------------Health Bonus Varients---------------"
+StaticText " "
+Option "Disable Health Bonus Varient 2", "CME_NoCMEHealthPlus3", "YesOrNo"
+StaticText " "
+
+Option "Disable Health Bonus Varient 3", "CME_NoCMESoulHealthBonus", "YesOrNo"
+StaticText " "
+
+Option "Disable Health Bonus Varient 4", "CME_NoCMEHealthPlusBig", "YesOrNo"
+StaticText " "
+
+Option "Disable Health Bonus Varient 5", "CME_NoCMEStrongHealthPlus", "YesOrNo"
+StaticText " "
+
+Option "Disable Health Bonus Varient 6", "CME_NoCMESuperHealthPlus", "YesOrNo"
+StaticText " "
+}
+OptionMenu "OtherItemMenu"
+{
+Title "Other Items Menu"
+StaticText "---------------Soul Sphere Varients---------------"
+StaticText " "
+Option "Disable Soul Sphere Varient 2", "CME_NoCMELifeSphere2", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Mega Sphere Varients---------------"
+StaticText " "
+Option "Disable Mega Sphere Varient 2", "CME_NoCMEUltrasphere", "YesOrNo"
+StaticText " "
+
+StaticText "---------------Backpack Varients---------------"
+StaticText " "
+Option "Disable Backpack Varient 2", "CME_NoCMEBackpack2", "YesOrNo"
+StaticText " "
+
+Option "Disable Backpack Varient 3", "CME_NoCMEBackpack3", "YesOrNo"
+StaticText " "
+
+Option "Disable Backpack Varient 4", "CME_NoCMEBackpack4", "YesOrNo"
+StaticText " "
+}
+
 
 OptionValue "BrutalBlood"
 {
@@ -98,4 +367,11 @@ OptionValue "YesOrNoFalse"
 {
 	1, "No"
 	0, "Yes"
+}
+
+OptionValue "BrutalDoomSpawnBalanceChoices"
+{
+0, "Off"
+1, "Tiered Progression"
+2, "Chaotic Random"
 }
